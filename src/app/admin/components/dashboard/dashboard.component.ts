@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertifyService,AlertType, Position } from 'src/app/services/admin/alertify.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alertify:AlertifyService) { }
 
   ngOnInit(): void {
+    this.alertify.message("ready", {
+      alertType:AlertType.Error,
+      delay: 5,
+      position:Position.TopLeft
+    } );
   }
 
 }
