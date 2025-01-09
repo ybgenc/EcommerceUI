@@ -1,0 +1,28 @@
+.custom-mat-list {
+  width: 250px;
+  background-color: transparent; /* Arka plan rengini şeffaf yapıyoruz */
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölgeleme efekti */
+}
+
+.mat-list-link {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mat-list-link:hover {
+  background-color: #dbbe39;
+  color: white;
+}
+
+.custom-icon {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.5rem;
+}

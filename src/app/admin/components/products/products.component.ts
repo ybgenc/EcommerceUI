@@ -12,9 +12,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.httpClientService.Get({
-      controller: "Product"
-    }).subscribe(data => console.log(data));
+    // this.httpClientService.Get({
+    //   controller: "Product"
+    // }).subscribe(data => console.log(data));
     
       // this.httpClientService.Create({
       //   controller: "Product"
