@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CustomersComponent } from './customers/customers.component';
@@ -20,7 +20,8 @@ import { NgxSpinner, NgxSpinnerModule } from 'ngx-spinner';
     OrdersModule,
     CustomersModule,
     DashboardModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+
   ]
 })
 export class ComponentsModule { }

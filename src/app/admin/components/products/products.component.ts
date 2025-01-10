@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
+import { ListComponent } from './list/list.component';
+import { Create_Product } from 'src/app/contract/create-product';
 
 @Component({
   selector: 'app-products',
@@ -9,6 +11,8 @@ import { HttpClientService } from 'src/app/services/common/http-client.service';
 export class ProductsComponent implements OnInit {
 
   constructor(private httpClientService : HttpClientService) { }
+
+  @ViewChild(ListComponent) listComponents : ListComponent;
 
   ngOnInit(): void {
 
@@ -36,12 +40,9 @@ export class ProductsComponent implements OnInit {
       // this.httpClientService.Delete({
       //   controller: "Product",
       // }, "e47e07b2-0c16-4df4-aba9-15ca9778710e").subscribe();
-
-
-  
-
-
-
   } //-->ngOnInit
+  createdProduct(createdProduct : Create_Product){
+    this.listComponents.getProducts();
+  }
 
 }//-->OnInit

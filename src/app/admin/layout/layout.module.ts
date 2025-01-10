@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { ComponentsModule } from './components/components.module';
 import { RouterModule } from '@angular/router';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -19,6 +20,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ComponentsModule,
     RouterModule,
     MatSidenavModule,
+    MatTableModule
 
   ],
   exports:[

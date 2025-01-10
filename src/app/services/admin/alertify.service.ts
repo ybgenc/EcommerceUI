@@ -12,7 +12,7 @@ export class AlertifyService {
     alertify.set('notifier','delay', options.delay);
     alertify.set('notifier','position',options.position);
     const alertMesseage = alertify[options.alertType](message);
-    if(options.dissmissOther) 
+    if(options.dismissOther) 
       alertMesseage.dismissOther();
   }
 
@@ -26,7 +26,7 @@ export class AlertifyOptions {
   alertType:AlertType = AlertType.Success;
   position:Position = Position.TopRight;
   delay:number = 3;
-  dissmissOther:boolean = false;
+  dismissOther:boolean = false;
 
 }
 
