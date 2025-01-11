@@ -6,34 +6,33 @@ html, body {
     width: 100%;
 }
 
-/* Product Container (Bütün Sayfayı Kaplayacak) */
 .product-container {
     display: flex;
-    height: 100vh; /* Sayfanın tamamını kapsar */
-    width: 82vw; /* Sayfanın tamamını kapsar */
+    height: 100vh; 
+    width: 82vw; 
     margin: 0;
     border: none;
-    box-sizing: border-box; /* Boyutlandırma hesaplamalarına padding ve border'ı dahil eder */
+    box-sizing: border-box; 
 }
 
-/* Drawer */
+
 mat-drawer {
-    width: 250px; /* Drawer genişliği */
-    background: #fef9c7; /* Pastel sarı arkaplan */
-    color: #333; /* Koyu renk metin */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölgeleme */
+    width: 250px; 
+    background: #fef9c7; 
+    color: #333; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     z-index: 10;
     padding: 15px;
-    box-sizing: border-box; /* Border'ı içerik alanına dahil eder */
+    box-sizing: border-box; 
 }
 
-/* Drawer Content (Ana İçerik Alanı) */
+
 mat-drawer-content {
-    flex-grow: 1; /* İçeriğin geri kalan kısmını alır */
-    background: #fff8e1; /* Açık pastel sarı arkaplan */
+    flex-grow: 1; 
+    background: #fff8e1; 
     padding: 20px;
-    overflow-y: auto; /* Dikey kaydırma aktif edilir */
-    overflow-x: hidden; /* Yatay kaydırma engellenir */
-    box-sizing: border-box; /* Padding dahil edilir */
-    width: 10%; /* İçeriğin genişliği, sayfanın geri kalan kısmını kapsar */
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    box-sizing: border-box; 
+    width: 10%; 
 }

@@ -14,7 +14,7 @@ import { DatePipe } from '@angular/common';
 })
 export class ListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['position', 'name', 'stock', 'price', 'createdDate', 'updatedDate'];
+  displayedColumns: string[] = ['position', 'name', 'stock', 'price', 'createdDate', 'updatedDate','delete','edit'];
   dataSource: MatTableDataSource<List_Product> = new MatTableDataSource<List_Product>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
