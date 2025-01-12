@@ -16,6 +16,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
 import { FileUploadComponent } from 'src/app/services/common/file-upload/file-upload.component';
 import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
+import { UpdateDirective } from 'src/app/directives/admin/update.directive';
+import { UpdateDialogComponent } from 'src/app/dialogs/update-dialog/update-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -32,6 +35,8 @@ import { FileUploadModule } from 'src/app/services/common/file-upload/file-uploa
     ListComponent,
     DeleteDirective,
     DeleteDialogComponent,
+    UpdateDirective,
+    UpdateDialogComponent
     
     
   ],
@@ -48,7 +53,8 @@ import { FileUploadModule } from 'src/app/services/common/file-upload/file-uploa
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    FileUploadModule
+    FileUploadModule,
+    FormsModule
 
 ],
   exports:[

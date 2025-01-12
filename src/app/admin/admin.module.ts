@@ -15,7 +15,8 @@ import { ComponentsModule } from './components/components.module';
   ],
   exports:[
     LayoutModule,
-    ComponentsModule
+    ComponentsModule,
+    
 
 
   ]

@@ -2,7 +2,7 @@
 .navbar {
   background: linear-gradient(90deg, #1E90FF, #32CD32);  /* Mavi - Yeşil geçişi */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+
 }
 
 .navbar-brand {
@@ -48,12 +48,13 @@
 
 /* Butonlar */
 .btn-gradient-custom {
-  background: linear-gradient(45deg, #1E90FF, #32CD32);  /* Mavi - Yeşil geçişi */
+  background: #1E90FF;  
   border: none;
   color: white;
   font-weight: 600;
   padding: 8px 16px;
-  border-radius: 5px;
+  margin-right: 10px;
+
   transition: all 0.3s ease;
 }
 

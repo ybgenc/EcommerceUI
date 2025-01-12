@@ -1,12 +1,21 @@
-/* Admin Sidebar */
+/* Sidebar container */
+.sidebar-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* Yatay kaydırmayı engeller */
+  position: relative;
+}
+
+/* Sidebar */
 .admin-left-drawer {
-  background: linear-gradient(90deg, #1E90FF, #32CD32);  /* Mavi ve yeşil geçişi */
+  background: linear-gradient(90deg, #1E90FF, #32CD32);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   color: white;
   width: 250px;
   transition: all 0.3s ease;
 }
 
+/* Sidebar açıldığında */
 .admin-left-drawer .mat-drawer-content {
   padding: 20px;
 }
@@ -22,7 +31,7 @@
 }
 
 .admin-left-drawer .mat-drawer-content a:hover {
-  background-color: #32CD32;  /* Yeşil hover */
+  background-color: #32CD32;
   border-radius: 5px;
 }
 
@@ -56,6 +65,39 @@
   color: white;
 }
 
+/* Menü Butonu */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #800080;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-toggle:hover {
+  background-color: #dbbe39;
+}
+
+/* Sidebar ve içerik kapsayıcı */
+.admin-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* Sidebar açıldığında içerik kayar */
+.mat-drawer-content {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.admin-left-drawer.open ~ .mat-drawer-content {
+  margin-left: 250px;
+}
+
 /* Footer */
 .app-footer {
   background: linear-gradient(45deg, #1E90FF, #32CD32);
@@ -69,26 +111,4 @@
 
 .app-footer p {
   margin: 0;
-}
-
-/* Admin-container adjustments */
-.admin-container {
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-}
-
-/* Responsive Design for smaller screens */
-@media (max-width: 991.98px) {
-  .admin-left-drawer {
-    width: 60%; 
-  }
-
-  .admin-left-drawer .mat-drawer-content a {
-    font-size: 1.2rem;
-  }
-
-  .admin-footer {
-    padding: 10px 0;
-  }
 }

@@ -10,11 +10,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { NgxFileDropModule } from 'ngx-file-drop';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    
+    
     
   
   ],
@@ -27,6 +29,8 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     ToastrModule.forRoot(),
     NgxSpinnerModule,
     HttpClientModule,
+    
+
 
   ],
   providers: [{provide : "baseUrl",useValue:"https://localhost:7148/api", multi : true},

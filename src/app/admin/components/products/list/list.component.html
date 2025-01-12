@@ -37,12 +37,25 @@
     </ng-container>
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        appUpdate
+        [rowData]="{ id: element.id, name: element.name, stock: element.stock, price: element.price }"
+        controller="Product"
+        (refreshTable)="getProducts()" 
+      >
         <button class="btn btn-gradient-custom" type="button">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
     </ng-container>
+    
+    
+    
+    
+    
+    
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef></th>
       <td
