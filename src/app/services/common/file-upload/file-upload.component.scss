@@ -1,0 +1,116 @@
+.file-upload-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+}
+
+.file-upload-box {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    border: 2px dashed #800080;
+    border-radius: 8px;
+    background-color: transparent;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    outline: none;
+    position: relative;
+}
+
+.file-upload-box .custom-content button {
+    position: absolute;
+    bottom: -50px;
+    margin-top: 20px;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #1E90FF, #32CD32);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.file-upload-box .custom-content button:hover {
+    background: linear-gradient(45deg, #32CD32, #1E90FF);
+}
+
+.file-upload-box:focus {
+    outline: none !important;
+}
+
+.file-upload-box:hover {
+    border-color: #660066;
+    outline: none !important;
+}
+
+ngx-file-drop {
+    outline: none !important;
+    border: 2px dashed #800080 !important;
+    box-shadow: none !important;
+}
+
+ngx-file-drop:focus,
+ngx-file-drop:active {
+    outline: none !important;
+}
+
+ngx-file-drop:hover {
+    border-color: #800080 !important;
+    outline: none !important;
+}
+
+.custom-content {
+    font-size: 16px;
+    color: #800080;
+}
+
+.file-list {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 35px;
+    background-color: transparent;
+    border-bottom: 2px dashed #800080;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.table th {
+    background-color: #800080;
+    color: white;
+    font-weight: 500;
+    width: 100%;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.table tr:hover {
+    background-color: transparent;
+}
+
+.table td strong {
+    color: #660066;
+    background-color: transparent;
+}

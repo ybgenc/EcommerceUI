@@ -3,6 +3,7 @@ import { NgxSpinner } from 'ngx-spinner';
 import { Create_Product } from 'src/app/contract/create-product';
 import { ProductService } from 'src/app/services/common/models/product.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FileUploadComponent, FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import {
   AlertifyService,
   AlertType,
@@ -24,6 +25,14 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {}
 
   @Output() createdProduct : EventEmitter<Create_Product> = new EventEmitter();
+  @Output() fileUploadOptions : Partial<FileUploadOptions> = {
+    action : "upload",
+    controller : "Product",
+    description : "Drag or Drop files",
+    isAdminPage : true,
+    accept :".png, .jpg, .jpeg,"
+  }
+
   Create(
     name: HTMLInputElement,
     stock: HTMLInputElement,

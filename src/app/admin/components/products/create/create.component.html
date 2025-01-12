@@ -12,6 +12,8 @@
     <mat-label>Price</mat-label>
     <input matInput type="number" min="0" value="0" #txtPrice>
   </mat-form-field>
+
+  <app-file-upload [options] = "fileUploadOptions"></app-file-upload>
   
   <div class="text-center">
     <button class="btn btn-gradient-custom" (click)="Create(txtName,txtStock,txtPrice)" type="submit">Create Product</button>

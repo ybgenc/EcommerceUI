@@ -1,0 +1,33 @@
+<div class="file-upload-wrapper">
+  <!-- Mor renk kutusu (Drag & Drop kısmı) -->
+  <div class="file-upload-box">
+    <ngx-file-drop dropZoneLabel="Drag and drop files here" [accept]="options.accept" (onFileDrop)="selectedFiles($event)">
+      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+        <div class="custom-content">
+          {{ options.description }}
+          <button class="browse-button" type="button" (click)="openFileSelector()">
+            Browse Files
+          </button>
+        </div>
+      </ng-template>
+    </ngx-file-drop>
+  </div>
+
+  <!-- Dosya listesinin yer aldığı kısım -->
+  <div class="file-list" *ngIf="files">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>File List</th>
+        </tr>
+      </thead>
+      <tbody class="upload-name-style">
+        <tr *ngFor="let item of files; let i = index">
+          <td>
+            <strong>{{ item.relativePath }}</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

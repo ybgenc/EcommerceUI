@@ -14,6 +14,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+import { FileUploadComponent } from 'src/app/services/common/file-upload/file-upload.component';
+import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
 
 
 
@@ -29,12 +31,14 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     CreateComponent,
     ListComponent,
     DeleteDirective,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    
+    
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path: '', component: ProductsComponent}
+        { path: '', component: ProductsComponent }
     ]),
     MatSidenavModule,
     MatFormFieldModule,
@@ -43,8 +47,10 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     MatPaginatorModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule
-  ],
+    MatDialogModule,
+    FileUploadModule
+
+],
   exports:[
     
   ]

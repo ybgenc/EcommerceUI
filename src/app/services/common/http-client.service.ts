@@ -59,8 +59,9 @@ export class HttpClientService {
 export class RequestParameters {
   controller?: string;
   action?: string;
+  queryString?: string;
+  
   header?: HttpHeaders;
-
   baseUrl?: string;
   fullEndpoint?: string;
 }
