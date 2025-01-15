@@ -1,0 +1,71 @@
+/* Dialog Container */
+.mat-dialog-container {
+    max-width: 600px; 
+    min-height: 300px; 
+    padding: 32px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+  }
+  
+  /* Title */
+  .mat-dialog-title {
+    color: #ff7d32;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 1.5em; 
+  }
+  
+  /* Content */
+  .mat-dialog-content {
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+    margin: 24px 0;
+  }
+  
+  /* Actions */
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 24px;
+  }
+  
+  /* Buttons */
+  .mat-button {
+    font-size: 1em;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  }
+  
+  .mat-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .cancel-button {
+    color: #757575;
+  }
+  
+.mat-dialog-actions button {
+    border: none;
+    background: transparent; 
+    padding: 10; 
+  }
+  
+  .mat-dialog-actions button mat-icon {
+    color: #ff7d32;
+    font-size: 24px; 
+    transition: color 0.3s ease; 
+  }
+  
+  .mat-dialog-actions button:hover mat-icon {
+    color: #7b1fa2; 
+  }
+  

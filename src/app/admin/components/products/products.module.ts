@@ -14,11 +14,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
-import { FileUploadComponent } from 'src/app/services/common/file-upload/file-upload.component';
 import { FileUploadModule } from 'src/app/services/common/file-upload/file-upload.module';
 import { UpdateDirective } from 'src/app/directives/admin/update.directive';
 import { UpdateDialogComponent } from 'src/app/dialogs/update-dialog/update-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { FileUploadDialogComponent } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
+import { DialogModule } from 'src/app/dialogs/dialog.module';
 
 
 
@@ -34,9 +35,9 @@ import { FormsModule } from '@angular/forms';
     CreateComponent,
     ListComponent,
     DeleteDirective,
-    DeleteDialogComponent,
     UpdateDirective,
-    UpdateDialogComponent
+    
+    
     
     
   ],
@@ -54,7 +55,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatDialogModule,
     FileUploadModule,
-    FormsModule
+    FormsModule,
+    DialogModule
 
 ],
   exports:[

@@ -12,6 +12,10 @@ import {
   ToasterCustomService,
   ToasterPosition,
 } from '../../ui/toaster-custom.service';
+import { FileUploadDialogComponent, FileUploadDialogState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogService } from '../dialog.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-file-upload',
@@ -22,7 +26,10 @@ export class FileUploadComponent implements OnInit {
   constructor(
     private httpClientService: HttpClientService,
     private alertifyService: AlertifyService,
-    private toasterCustomService: ToasterCustomService
+    private toasterCustomService: ToasterCustomService,
+    private dialog: MatDialog,
+    private dialogService: DialogService,
+    private spinner : NgxSpinnerService
   ) {}
 
   @Input() options: Partial<FileUploadOptions>;
@@ -39,57 +46,66 @@ export class FileUploadComponent implements OnInit {
         fileData.append(_file.name, _file, file.relativePath);
       });
     }
-    this.httpClientService
-      .Create(
-        {
-          controller: this.options.controller,
-          action: this.options.action,
-          queryString: this.options.queryString,
-          header: new HttpHeaders({ responseType: 'blob' }),
-        },
-        fileData
-      )
-      .subscribe(
-        () => {
-          if (this.options.isAdminPage) {
-            this.alertifyService.message('Files uploaded successfully', {
-              alertType: AlertType.Success,
-              position: Position.TopRight,
-              dismissOther: true,
-            });
-          } else {
-            this.toasterCustomService.message(
-              'Files uploaded succesfully',
-              'Successs',
-              {
-                toasterAlertType: ToasterAlertType.Success,
-                position: ToasterPosition.TopRight,
+
+    this.dialogService.openDialog({
+      componentType: FileUploadDialogComponent,
+      data: FileUploadDialogState.Yes,
+      afterClosed: () => {
+        this.spinner.show()
+        this.httpClientService
+          .Create(
+            {
+              controller: this.options.controller,
+              action: this.options.action,
+              queryString: this.options.queryString,
+              header: new HttpHeaders({ responseType: 'blob' }),
+            },
+            fileData
+          )
+          .subscribe(
+            () => { this.spinner.hide()
+              if (this.options.isAdminPage) {
+                this.alertifyService.message('Files uploaded successfully', {
+                  alertType: AlertType.Success,
+                  position: Position.TopRight,
+                  dismissOther: true,
+                });
+              } else {
+                this.toasterCustomService.message(
+                  'Files uploaded successfully',
+                  'Success',
+                  {
+                    toasterAlertType: ToasterAlertType.Success,
+                    position: ToasterPosition.TopRight,
+                  }
+                );
               }
-            );
-          }
-        },
-        (errorResponse: HttpErrorResponse) => {
-          if (this.options.isAdminPage) {
-            this.alertifyService.message(
-              'An error occurred while uploading the files.',
-              {
-                alertType: AlertType.Error,
-                position: Position.TopRight,
-                dismissOther: true,
-              }
-            );
-          } else {
-            this.toasterCustomService.message(
-              'An error occurred while uploading the files.',
-              'Error',
-              {
-                toasterAlertType: ToasterAlertType.Error,
-                position: ToasterPosition.TopRight,
-              }
-            );
-          }
-        }
-      );
+            }, 
+            (errorResponse: HttpErrorResponse) => {
+              this.spinner.hide()
+              if (this.options.isAdminPage) {
+                this.alertifyService.message(
+                  'An error occurred while uploading the files.',
+                  {
+                    alertType: AlertType.Error,
+                    position: Position.TopRight,
+                    dismissOther: true,
+                  }
+                );
+              } else {
+                this.toasterCustomService.message(
+                  'An error occurred while uploading the files.',
+                  'Error',
+                  {
+                    toasterAlertType: ToasterAlertType.Error,
+                    position: ToasterPosition.TopRight,
+                  }
+                );
+              } 
+            }
+          );
+      },
+    });
   }
 }
 

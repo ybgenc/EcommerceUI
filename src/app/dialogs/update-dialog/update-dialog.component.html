@@ -5,7 +5,7 @@
   <div *ngFor="let column of columns">
     <mat-form-field *ngIf="column !== 'edit' && column !== 'delete' && column !== 'updatedDate' && column !== 'createdDate'">
     <mat-label>{{ column | titlecase }}</mat-label>
-    <input matInput [(ngModel)]="rowData[column]" type="text" />
+    <input matInput [(ngModel)]="rowData[column]" [disabled]="column === 'id'"  type="text" />
   </mat-form-field>
 </div>
 </mat-dialog-content>

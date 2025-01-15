@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
     controller : "Product",
     description : "Drag or Drop files",
     isAdminPage : true,
-    accept :".png, .jpg, .jpeg,"
+    accept :".png, .jpg, .jpeg, .json, .pdf"
   }
 
   Create(
