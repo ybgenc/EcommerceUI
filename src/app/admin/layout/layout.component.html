@@ -1,10 +1,29 @@
-<!-- <app-header></app-header> -->
+
+<button
+  class="menu-toggle"
+  (click)="toggleSidebar()"
+>
+  ☰
+</button>
+
+<!-- Footer -->
+ <!-- <app-header></app-header> -->
 <mat-drawer-container class="admin-container">
-  <mat-drawer mode="side" opened class="admin-left-drawer">
+  <!-- Sidebar -->
+  <mat-drawer
+    #drawer
+    mode="side"
+    [opened]="isSidebarOpen"
+    class="admin-left-drawer"
+    (openedChange)="onDrawerToggle($event)"
+  >
     <app-sidebar></app-sidebar>
   </mat-drawer>
-  <mat-drawer-content>
+
+  <!-- Main content -->
+  <mat-drawer-content [ngClass]="{ 'full-width': !isSidebarOpen }">
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
-<app-footer></app-footer>
+
+<!-- <app-footer></app-footer> -->

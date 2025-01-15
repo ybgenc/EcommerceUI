@@ -1,8 +1,17 @@
-/* Navbar genel tasarım */
 .navbar {
-  background: linear-gradient(90deg, #1E90FF, #32CD32);  /* Mavi - Yeşil geçişi */
+  background: linear-gradient(90deg, #1E90FF, #32CD32);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  padding: 10px 20px; 
+  box-sizing: border-box; 
 
+}
+.PageContent{
+  margin-top: 60px;
 }
 
 .navbar-brand {
@@ -20,41 +29,51 @@
 }
 
 .nav-link:hover {
-  color: #98FB98 !important;  /* Açık yeşil renk */
-  transform: scale(1.1);  /* Hoverda büyüme efekti */
+  color: #98FB98 !important;
+  transform: scale(1.1);
 }
 
 .navbar-toggler-icon {
+  background-color: #32CD32 !important;
+  transition: background-color 0.3
+
+}
+.navbar-brand {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #98FB98 !important;
+  transform: scale(1.1);
+}
+
+.navbar-toggler-icon {
+  background-color: #32CD32 !important;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-toggler.open .navbar-toggler-icon {
+  transform: rotate(90deg);
   background-color: #fff;
-  transition: background-color 0.3s ease;
 }
 
-.navbar-toggler-icon:hover {
-  background-color: #32CD32;
-}
-
-/* Dropdown Menüsü */
-.nav-item.dropdown .dropdown-menu {
-  background-color: #3CB371;
-}
-
-.nav-item.dropdown .dropdown-menu .dropdown-item {
-  color: #fff;
-}
-
-.nav-item.dropdown .dropdown-menu .dropdown-item:hover {
-  background-color: #2E8B57; /* Koyu yeşil hover efekti */
-}
-
-/* Butonlar */
 .btn-gradient-custom {
-  background: #1E90FF;  
+  background: #1E90FF;
   border: none;
   color: white;
   font-weight: 600;
   padding: 8px 16px;
   margin-right: 10px;
-
   transition: all 0.3s ease;
 }
 
@@ -75,7 +94,6 @@
   border-color: #32CD32;
 }
 
-/* Responsive Düzenlemeler */
 @media (max-width: 991.98px) {
   .navbar-nav {
     text-align: center;

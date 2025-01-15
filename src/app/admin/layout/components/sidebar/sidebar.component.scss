@@ -1,11 +1,32 @@
-.custom-mat-list {
-  width: 250px;
-  background-color: transparent; /* Arka plan rengini şeffaf yapıyoruz */
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölgeleme efekti */
+/* Global Reset - Body and HTML */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
+.sidebar {
+  position: fixed;
+  margin-top: 20px;
+  left: 0;
+  width: 250px;
+  background-color: #fef9c7;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-open {
+  transform: translateX(0); 
+}
+
+.sidebar-closed {
+  transform: translateX(-100%); 
+}
+
+/* Sidebar Links */
 .mat-list-link {
   display: flex;
   align-items: center;
@@ -25,4 +46,13 @@
   display: inline-block;
   margin-right: 10px;
   font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    height: 100vh; 
+  }
+}
+.custom-mat-list{
+  margin-top: 30px;
 }

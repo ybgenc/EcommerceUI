@@ -1,17 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-gradient-blue-green">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">E-Commerce</a>
-    <button 
-      class="navbar-toggler" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#navbarSupportedContent" 
-      aria-controls="navbarSupportedContent" 
-      aria-expanded="false" 
-      aria-label="Toggle navigation">
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="toggleNavbar()"
+      aria-controls="navbarSupportedContent"
+      [attr.aria-expanded]="isNavbarOpen"
+      aria-label="Toggle navigation"
+      [class.open]="isNavbarOpen"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      [ngClass]="{ show: isNavbarOpen }"
+    >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="">Home</a>
@@ -23,18 +30,19 @@
           <a class="nav-link" routerLink="basket">Basket</a>
         </li>
         <li class="nav-item dropdown">
-          <a 
-            class="nav-link dropdown-toggle" 
-            href="#" 
-            role="button" 
-            data-bs-toggle="dropdown" 
-            aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Options
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li><hr class="dropdown-divider" /></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
@@ -42,17 +50,20 @@
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
+
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <form class="d-flex" role="search">
-            <input 
-              class="form-control me-2" 
-              type="search" 
-              placeholder="Search" 
-              aria-label="Search">
-            <button class="btn btn-gradient-custom" type="submit">Search</button>
-
-            <a class="btn btn-outline-light me-2" type="button" routerLink="admin">Admin</a>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-gradient-custom" type="submit">
+              Search
+            </button>
+            <a class="btn btn-outline-light me-2" routerLink="admin">Admin</a>
           </form>
         </li>
       </ul>
@@ -60,6 +71,11 @@
   </div>
 </nav>
 
-<ngx-spinner color="#32CD32" size="default" type="square-jelly-box"></ngx-spinner>
-
-<router-outlet></router-outlet>
+<ngx-spinner
+  color="#32CD32"
+  size="default"
+  type="square-jelly-box"
+></ngx-spinner>
+<div class="PageContent">
+  <router-outlet></router-outlet>
+</div>

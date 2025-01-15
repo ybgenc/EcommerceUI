@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
+  isSidebarOpen = false; // Controls sidebar visibility
+
+  onDrawerToggle(event: boolean) {
+    this.isSidebarOpen = event;
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 
   ngOnInit(): void {}
 }

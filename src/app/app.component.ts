@@ -8,6 +8,11 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'EcommerceUI';
+  isNavbarOpen: boolean = false; 
+
+  toggleNavbar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
+  }
 
   constructor(){
 
