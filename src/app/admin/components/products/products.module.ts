@@ -20,6 +20,7 @@ import { UpdateDialogComponent } from 'src/app/dialogs/update-dialog/update-dial
 import { FormsModule } from '@angular/forms';
 import { FileUploadDialogComponent } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { DialogModule } from 'src/app/dialogs/dialog.module';
+import { CreateDialogComponent } from 'src/app/dialogs/create-dialog/create-dialog.component';
 
 
 
@@ -36,6 +37,7 @@ import { DialogModule } from 'src/app/dialogs/dialog.module';
     ListComponent,
     DeleteDirective,
     UpdateDirective,
+    
     
     
     

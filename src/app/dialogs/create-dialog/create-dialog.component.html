@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Create</h2>
+<mat-dialog-content>
+    <p>Are you sure you want to create this item?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="cancel-button" (click)="close()">No Thanks</button>
+  <button mat-button class="delete-button" (click)="onCreate()" cdkFocusInitial>
+      <mat-icon>create</mat-icon>
+  </button>
+</mat-dialog-actions>
+

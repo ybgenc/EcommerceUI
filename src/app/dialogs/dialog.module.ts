@@ -12,12 +12,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
 @NgModule({
   declarations: [
     DeleteDialogComponent,
     UpdateDialogComponent,
     FileUploadDialogComponent,
+    CreateDialogComponent,
   ],
   imports: [
     CommonModule,
