@@ -13,13 +13,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { ProductImageUploadDialogComponent } from './product-image-upload-dialog/product-image-upload-dialog.component';
+import { FileUploadModule } from '../services/common/file-upload/file-upload.module';
 
 @NgModule({
   declarations: [
     DeleteDialogComponent,
     UpdateDialogComponent,
-    FileUploadDialogComponent,
     CreateDialogComponent,
+    ProductImageUploadDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { CreateDialogComponent } from './create-dialog/create-dialog.component';
     MatTableModule,
     MatIconModule,
     MatDialogModule,
+    FileUploadModule
   ],
 })
 export class DialogModule {}

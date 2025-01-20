@@ -13,10 +13,13 @@
   <input matInput type="number" min="0" value="0" #txtPrice>
 </mat-form-field>
 
-<app-file-upload [options]="fileUploadOptions"></app-file-upload>
-
 <div class="text-center">
   <button class="btn btn-gradient-custom" (click)="openCreateDialog(txtName, txtStock, txtPrice)" type="submit">
     Create Product
   </button>
 </div>
+<hr/>
+
+
+<app-file-upload [options]="fileUploadOptions"></app-file-upload>
+

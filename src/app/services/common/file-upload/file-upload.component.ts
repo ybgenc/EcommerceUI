@@ -46,12 +46,12 @@ export class FileUploadComponent implements OnInit {
         fileData.append(_file.name, _file, file.relativePath);
       });
     }
-
+  
     this.dialogService.openDialog({
       componentType: FileUploadDialogComponent,
       data: FileUploadDialogState.Yes,
       afterClosed: () => {
-        this.spinner.show()
+        this.spinner.show();
         this.httpClientService
           .Create(
             {
@@ -63,7 +63,8 @@ export class FileUploadComponent implements OnInit {
             fileData
           )
           .subscribe(
-            () => { this.spinner.hide()
+            () => {
+              this.spinner.hide();
               if (this.options.isAdminPage) {
                 this.alertifyService.message('Files uploaded successfully', {
                   alertType: AlertType.Success,
@@ -80,9 +81,9 @@ export class FileUploadComponent implements OnInit {
                   }
                 );
               }
-            }, 
+            },
             (errorResponse: HttpErrorResponse) => {
-              this.spinner.hide()
+              this.spinner.hide();
               if (this.options.isAdminPage) {
                 this.alertifyService.message(
                   'An error occurred while uploading the files.',
@@ -101,12 +102,13 @@ export class FileUploadComponent implements OnInit {
                     position: ToasterPosition.TopRight,
                   }
                 );
-              } 
+              }
             }
           );
       },
     });
   }
+  
 }
 
 export class FileUploadOptions {
