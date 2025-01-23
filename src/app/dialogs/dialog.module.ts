@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
-import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +14,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 import { ProductImageUploadDialogComponent } from './product-image-upload-dialog/product-image-upload-dialog.component';
 import { FileUploadModule } from '../services/common/file-upload/file-upload.module';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FileUploadModule } from '../services/common/file-upload/file-upload.mod
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    FileUploadModule
+    FileUploadModule,
+    MatCardModule
   ],
 })
 export class DialogModule {}

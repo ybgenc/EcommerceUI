@@ -1,150 +1,111 @@
-/* Make dialog container significantly larger */
+/* Diyalog Penceresi */
 .mat-dialog-container {
-    width: 80%; /* Take up 80% of the width of the screen */
-    max-width: 900px; /* Maximum width of the dialog */
-    min-height: 600px; /* Ensure it has a sufficient height */
-    padding: 30px;
+  width: 70%; 
+  max-width: 100%;
+  height: 80vh; 
+  background-color: white;
+  border-radius: 12px;
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-dialog-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #7b1fa2;
+  text-align: center;
+  padding: 15px;
+}
+
+.file-upload {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.uploaded-images {
+  flex-grow: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.uploaded-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #4a4a4a;
+  margin-bottom: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; 
+  justify-content: center; 
+}
+
+.col {
+  flex: 1 1 calc(33.333% - 16px); 
+  max-width: calc(33.333% - 16px); 
+  box-sizing: border-box;
+}
+
+.product-image-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+}
+
+/* Resimler */
+.product-image-card img {
+  width: 100%;
+  height: 250px; 
+  object-fit: cover; 
+}
+
+.delete-button {
+  background-color: transparent;
+  color: #7b1fa2;
+  padding: 0;
+  border: none;
+  font-size: 24px;
+}
+
+.delete-button:hover {
+  color: #d32f2f;
+}
+
+
+@media (max-width: 768px) {
+  .product-image-card {
+    max-width: 100%; 
+    height: auto; 
   }
-  
-  /* Title Styling */
-  .mat-dialog-title {
-    font-size: 2rem; /* Larger font size */
-    font-weight: bold;
-    color: #7b1fa2;
-    text-align: center;
-    margin-bottom: 20px;
+
+  .product-image-card img {
+    height: 200px; 
   }
-  
-  /* Content Styling */
-  .mat-dialog-content {
-    padding: 20px;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  
-  /* File upload area */
-  .file-upload-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-  }
-  
-  .file-upload-box {
-    width: 100%;
-    padding: 40px;
-    border: 2px dashed #7b1fa2;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .file-upload-box .browse-button {
-    background-color: #7b1fa2;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 8px;
-    font-size: 1.2rem;
-  }
-  
-  .file-upload-box .browse-button:hover {
-    background-color: #9c27b0;
-  }
-  
-  /* Image preview area */
-  .image-preview {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .image-preview img {
-    max-width: 100%;
-    max-height: 350px;
-    margin: 20px;
-    border-radius: 8px;
-  }
-  
-  .image-preview .remove-image {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 1.2rem;
-  }
-  
-  .image-preview .remove-image:hover {
-    background-color: #d32f2f;
-  }
-  
-  /* Dialog actions */
-  .mat-dialog-actions {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 30px;
-  }
-  
-  button.mat-button {
-    font-size: 1.5rem;
-    padding: 15px 30px;
-    margin: 10px;
-    border-radius: 8px;
-    width: 180px;
-  }
-  
-  .cancel-button {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .cancel-button:hover {
-    background-color: #d32f2f;
-  }
-  
-  .delete-button {
-    background-color: #7b1fa2;
-    color: white;
-  }
-  
-  .delete-button:hover {
-    background-color: #9c27b0;
-  }
-  
-  .delete-button mat-icon {
-    margin-right: 8px;
-  }
-  
-  /* Responsiveness */
-  @media (max-width: 768px) {
-    .mat-dialog-container {
-      width: 90%; /* Adjust width to 90% for smaller screens */
-      min-height: 500px; /* Slightly smaller height */
-    }
-  
-    .mat-dialog-title {
-      font-size: 1.8rem;
-    }
-  
-    .file-upload-box {
-      padding: 30px;
-    }
-  
-    .image-preview img {
-      max-width: 80%;
-      max-height: 250px;
-    }
-  
-    button.mat-button {
-      font-size: 1.2rem;
-      padding: 12px 25px;
-      width: 100%;
-    }
-  
-    .cancel-button, .delete-button {
-      margin: 15px 0;
-    }
-  }
-  
+}
+
+
+.product-image-card .mat-card-actions mat-icon {
+  font-size: 36px; 
+}
+
+
+
+.mat-dialog-actions {
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel-button {
+  background-color: #7b1fa2;
+  color: white;
+  text-align: center;
+}

@@ -1,7 +1,10 @@
 <div class="file-upload-wrapper">
   <!-- Mor renk kutusu (Drag & Drop kısmı) -->
   <div class="file-upload-box">
-    <ngx-file-drop dropZoneLabel="Drag and drop files here" [accept]="options.accept" (onFileDrop)="selectedFiles($event)">
+    <ngx-file-drop
+      dropZoneLabel="Drag and drop files here"
+      [accept]="options.accept"
+      (onFileDrop)="selectedFiles($event)">
       <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
         <div class="custom-content">
           {{ options.description }}

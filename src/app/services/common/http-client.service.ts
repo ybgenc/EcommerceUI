@@ -18,13 +18,14 @@ export class HttpClientService {
 
     url = `${this.url(requestParameters)}`;
 
-    requestParameters.fullEndpoint ? url = requestParameters.fullEndpoint : url = `${this.url(requestParameters)} ${id ? `/${id}` : ""}`;
+    requestParameters.fullEndpoint ? url = requestParameters.fullEndpoint : url = `${this.url(requestParameters)}${id ? `/${id}` : ""}`;
+
 
     return this.httpClient.get<T>(url, { headers: requestParameters.header})
    }
 
 
-   Create<T>(requestParameters: Partial<RequestParameters>, body : Partial<T>) : Observable<T> {
+   Post<T>(requestParameters: Partial<RequestParameters>, body : Partial<T>) : Observable<T> {
 
     let url : string = "";
 

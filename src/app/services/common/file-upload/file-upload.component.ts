@@ -22,7 +22,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],
 })
-export class FileUploadComponent implements OnInit {
+export class FileUploadComponent  {
   constructor(
     private httpClientService: HttpClientService,
     private alertifyService: AlertifyService,
@@ -34,80 +34,91 @@ export class FileUploadComponent implements OnInit {
 
   @Input() options: Partial<FileUploadOptions>;
 
-  ngOnInit(): void {}
 
   public files: NgxFileDropEntry[];
 
   public selectedFiles(files: NgxFileDropEntry[]) {
     this.files = files;
     const fileData: FormData = new FormData();
+  
+    // Dosyaları FormData'ya ekle
     for (const file of files) {
       (file.fileEntry as FileSystemFileEntry).file((_file: File) => {
         fileData.append(_file.name, _file, file.relativePath);
       });
     }
   
+    // ID'yi FormData'ya ekle
+    const id = this.options.queryString.split('=')[1];  // Eğer queryString şeklinde geliyorsa
+    if (id) {
+      fileData.append("id", id);
+    } else {
+      console.error('ID is missing!');
+    }
+  
+    // Dialog aç ve dosyayı yükle
     this.dialogService.openDialog({
       componentType: FileUploadDialogComponent,
       data: FileUploadDialogState.Yes,
       afterClosed: () => {
         this.spinner.show();
+  
         this.httpClientService
-          .Create(
-            {
-              controller: this.options.controller,
-              action: this.options.action,
-              queryString: this.options.queryString,
-              header: new HttpHeaders({ responseType: 'blob' }),
-            },
-            fileData
-          )
-          .subscribe(
-            () => {
-              this.spinner.hide();
-              if (this.options.isAdminPage) {
-                this.alertifyService.message('Files uploaded successfully', {
-                  alertType: AlertType.Success,
+        .Post({
+          controller: this.options.controller,
+          action: this.options.action,
+          queryString: `id=${id}&${this.options.queryString}`,
+          header: new HttpHeaders({ responseType: 'blob' }),
+        }, fileData).subscribe({
+          next: (data) => {
+            this.spinner.hide();
+            if (this.options.isAdminPage) {
+              this.alertifyService.message('Files uploaded successfully', {
+                alertType: AlertType.Success,
+                position: Position.TopRight,
+                dismissOther: true,
+              });
+            } else {
+              this.toasterCustomService.message(
+                'Files uploaded successfully',
+                'Success',
+                {
+                  toasterAlertType: ToasterAlertType.Success,
+                  position: ToasterPosition.TopRight,
+                }
+              );
+            }
+          },
+          error: (errorResponse: HttpErrorResponse) => {
+            this.spinner.hide();
+            if (this.options.isAdminPage) {
+              this.alertifyService.message(
+                'An error occurred while uploading the files.',
+                {
+                  alertType: AlertType.Error,
                   position: Position.TopRight,
                   dismissOther: true,
-                });
-              } else {
-                this.toasterCustomService.message(
-                  'Files uploaded successfully',
-                  'Success',
-                  {
-                    toasterAlertType: ToasterAlertType.Success,
-                    position: ToasterPosition.TopRight,
-                  }
-                );
-              }
-            },
-            (errorResponse: HttpErrorResponse) => {
-              this.spinner.hide();
-              if (this.options.isAdminPage) {
-                this.alertifyService.message(
-                  'An error occurred while uploading the files.',
-                  {
-                    alertType: AlertType.Error,
-                    position: Position.TopRight,
-                    dismissOther: true,
-                  }
-                );
-              } else {
-                this.toasterCustomService.message(
-                  'An error occurred while uploading the files.',
-                  'Error',
-                  {
-                    toasterAlertType: ToasterAlertType.Error,
-                    position: ToasterPosition.TopRight,
-                  }
-                );
-              }
+                }
+              );
+            } else {
+              this.toasterCustomService.message(
+                'An error occurred while uploading the files.',
+                'Error',
+                {
+                  toasterAlertType: ToasterAlertType.Error,
+                  position: ToasterPosition.TopRight,
+                }
+              );
             }
-          );
+          },
+          complete: () => {
+            console.log('File upload process completed.');
+          }
+        });
       },
     });
   }
+  
   
 }
 
