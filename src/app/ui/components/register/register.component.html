@@ -39,20 +39,38 @@
                     <small *ngIf="registerForm.controls['email'].hasError('email')">please enter a valid email</small>
                 </div>
             </div>
+            <!-- Password -->
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" formControlName="password" [class.is-invalid]="
-            registerForm.controls['password'].invalid &&
-            registerForm.controls['password'].touched
-          " placeholder="Enter your password" required />
-                <div  class="invalid-feedback">
-                    <small *ngIf="registerForm.controls['password'].hasError('required')">Password is required.</small>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                  [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                  placeholder="Enter your password"
+                  required
+                />
+                <div class="invalid-feedback">
+                  <small *ngIf="registerForm.get('password')?.hasError('required')">Password is required.</small>
                 </div>
-                <div  class="invalid-feedback">
-                    <small *ngIf="registerForm.controls['password'].hasError('minlength')">Password must contain at least 8 characters.</small>
+                <div class="invalid-feedback">
+                  <small *ngIf="registerForm.get('password')?.hasError('minlength')">Password must contain at least 8 characters.</small>
                 </div>
-            </div>
-
+                <div class="invalid-feedback">
+                  <small *ngIf="registerForm.get('password')?.hasError('uppercase')">Password must contain at least one uppercase letter.</small>
+                </div>
+                <div class="invalid-feedback">
+                  <small *ngIf="registerForm.get('password')?.hasError('lowercase')">Password must contain at least one lowercase letter.</small>
+                </div>
+                <div class="invalid-feedback">
+                  <small *ngIf="registerForm.get('password')?.hasError('number')">Password must contain at least one number.</small>
+                </div>
+                <div class="invalid-feedback">
+                  <small *ngIf="registerForm.get('password')?.hasError('specialChar')">Password must contain at least one special character.</small>
+                </div>
+              </div>
+              
             <!-- Confirm Password -->
             <div class="mb-3">
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
