@@ -47,20 +47,22 @@ export class ProductService {
     successCallback: () => void,
     errorCallback: (errorMessage: string) => void
   ): Promise<List_Product[]> {
-    const data: Promise<List_Product[]> = this.httpClientService
-      .Get<List_Product[]>({
-        controller: 'Product',
-      })
-      .toPromise();
-
-    data
-      .then((d) => successCallback())
-      .catch((errorResponse: HttpErrorResponse) =>
-        errorCallback(errorResponse.message)
-      );
-
-    return await data;
+    try {
+      const response = await this.httpClientService
+        .Get<{ products: List_Product[] }>({
+          controller: 'Product',
+        })
+        .toPromise();
+  
+      successCallback();
+      return response.products; 
+    } 
+    catch (errorResponse) {
+      errorCallback(errorResponse.message);
+      return []; 
+    }
   }
+  
 
   async Delete(id: string){
     const deleteObs : Observable<any> = this.httpClientService.Delete<any>({
@@ -79,13 +81,19 @@ export class ProductService {
 }
 
 async DeleteImage(id: string, imageId: string) {
-  const deletObservable = this.httpClientService.Delete({
-    action: "DeleteProductImage",
-    controller: "product",
-    queryString: `imageId=${imageId}`, 
-  }, id);
+  const fullEndpoint = `https://localhost:7148/api/Product/DeleteProductImage/${id}?imageId=${(imageId)}`; // todo => Fix it
 
-  await firstValueFrom(deletObservable); 
+  const deleteObservable = this.httpClientService.Delete(
+    {
+      fullEndpoint: fullEndpoint, 
+    },
+    id
+  );
+  
+  return await firstValueFrom(deleteObservable);
 }
+
+
+
 
 }

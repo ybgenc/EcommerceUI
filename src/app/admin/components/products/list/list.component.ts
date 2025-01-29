@@ -54,7 +54,7 @@ export class ListComponent implements OnInit, AfterViewInit {
 
   async getProducts() {
     this.spinner.show();
-
+  
     const ProductList: List_Product[] = await this.productService.Get(
       () => {
         this.spinner.hide();
@@ -68,9 +68,12 @@ export class ListComponent implements OnInit, AfterViewInit {
         });
       }
     );
-
-    this.dataSource.data = ProductList;
+  
+    if (ProductList) {
+      this.dataSource.data = ProductList; // Doğrudan tabloya bağlama
+    }
   }
+  
 
   async ngOnInit() {
     await this.getProducts();

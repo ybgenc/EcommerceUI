@@ -1,0 +1,73 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent; 
+}
+
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fef9c7;
+}
+
+input {
+    background-color: transparent !important;  
+    border: 1px solid #ccc;  
+    color: #333; 
+    padding: 8px;  
+    font-size: 16px; 
+}
+
+/* Odaklanma durumu */
+input:focus {
+    background-color: transparent !important;  
+    border-color: #7b1fa2;  
+    outline: none;  
+}
+/* Custom Checkbox Styling */
+.form-check-input:checked {
+    background-color: #6a1b9a !important;
+    border-color: #6a1b9a !important;
+}
+
+.form-check-input:focus {
+    border-color: #6a1b9a !important; /* Change focus color as well */
+    outline: none; /* Remove outline */
+}
+
+.form-check-input {
+    border: 1px solid #ccc; /* Default border color */
+}
+
+/* If you want to change the checkmark icon color */
+.form-check-input:checked::after {
+    background-color: #6a1b9a !important;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(232, 229, 199, 0.5) !important; /* %50 transparan */
+    overflow-y: auto;
+}
+
+
+
+/* Button styling */
+.btn-primary {
+    background-color: #6a1b9a;
+    border-color: #6a1b9a;
+}
+
+.btn-primary:hover {
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+}
