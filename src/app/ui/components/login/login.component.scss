@@ -6,11 +6,10 @@ html, body {
 }
 
 
-.register-container {
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #fef9c7;
 }
 
@@ -28,27 +27,9 @@ input:focus {
     border-color: #7b1fa2;  
     outline: none;  
 }
-/* Custom Checkbox Styling */
-.form-check-input:checked {
-    background-color: #6a1b9a !important;
-    border-color: #6a1b9a !important;
-}
 
-.form-check-input:focus {
-    border-color: #6a1b9a !important; 
-    outline: none; /* Remove outline */
-}
 
-.form-check-input {
-    border: 1px solid #ccc; /* Default border color */
-}
-
-/* If you want to change the checkmark icon color */
-.form-check-input:checked::after {
-    background-color: #6a1b9a !important;
-}
-
-.register-card {
+.login-card {
     width: 100%;
     max-width: 600px;
     max-height: 90vh;

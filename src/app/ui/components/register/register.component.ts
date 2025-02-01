@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { NgxSpinner } from 'ngx-spinner';
 import { Create_User } from 'src/app/contract/users/create-user';
 import { User } from 'src/app/Entities/User';
 import { Position } from 'src/app/services/admin/alertify.service';
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private userService : UserService,
-    private toastService : ToasterCustomService
+    private toastService : ToasterCustomService,
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +72,7 @@ export class RegisterComponent implements OnInit {
  async  submitForm(user : User) {
     if (this.registerForm.valid) {
      const result : Create_User = await this.userService.create(user);
+      
      if(result.succeeded){
       this.toastService.message(result.message, 'User created successfully.',{
         toasterAlertType : ToasterAlertType.Success,
