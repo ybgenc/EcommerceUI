@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { NgxSpinner } from 'ngx-spinner';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { firstValueFrom, Observable, observable } from 'rxjs';
 import { Login_User } from 'src/app/contract/users/login-user';
+import { AuthService } from 'src/app/services/common/auth.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { ToasterCustomService } from 'src/app/services/ui/toaster-custom.service';
@@ -20,6 +22,10 @@ export class LoginComponent implements OnInit {
     private httpClientService:HttpClientService,
     private toasterService : ToasterCustomService,
     private userService : UserService,
+    private authService : AuthService,
+    private spinner : NgxSpinnerService,
+    private activateddRoute : ActivatedRoute,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +35,17 @@ export class LoginComponent implements OnInit {
     });
   }
   async submitForm(data :Login_User){
-      await this.userService.submitForm(data)
+      this.spinner.show()
+      await this.userService.submitForm(data, () => {
+        this.authService.checkIdentity()
+        this.activateddRoute.queryParams.subscribe(params => {
+          const returnUrl : string = params["returnUrl"];
+          if(returnUrl){
+            this.router.navigate([returnUrl])
+          }
+        })
+        this.spinner.hide()
+      })
     
   }
 

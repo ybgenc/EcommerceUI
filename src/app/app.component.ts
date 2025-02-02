@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/common/auth.service';
+import { ToasterAlertType, ToasterCustomService, ToasterPosition } from './services/ui/toaster-custom.service';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -14,8 +17,17 @@ export class AppComponent {
     this.isNavbarOpen = !this.isNavbarOpen;
   }
 
-  constructor(){
+  constructor(public authService : AuthService, private toasterService : ToasterCustomService, private router : Router){
+    authService.checkIdentity();
+  }
 
-
+  logOut(){
+    localStorage.removeItem("accessToken");
+    this.authService.checkIdentity();
+    this.router.navigate([""])
+    this.toasterService.message("Logged out.","Session ended" ,{
+      position : ToasterPosition.TopLeft,
+      toasterAlertType : ToasterAlertType.Success
+    })
   }
 }

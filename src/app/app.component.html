@@ -29,7 +29,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="basket">Basket</a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -48,12 +48,13 @@
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+        </li> -->
       </ul>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <form class="d-flex" role="search">
+          <form class="d-flex">
+          <!-- <form class="d-flex" role="search">
             <input
               class="form-control me-2"
               type="search"
@@ -62,10 +63,11 @@
             />
             <button class="btn btn-gradient-custom" type="submit">
               Search
-            </button>
-            <a class="btn btn-outline-light me-2" routerLink="admin">Admin</a>
-            <a class="btn btn-outline-light me-2" routerLink="register">SignUp</a>
-            <a class="btn btn-outline-light me-2" routerLink="login">Login</a>
+            </button> -->
+            <a class="btn btn-outline-light me-2" routerLink="admin" *ngIf="authService.isAutheticated">Admin</a>
+            <a class="btn btn-outline-light me-2" routerLink="register" *ngIf="!authService.isAutheticated">SignUp</a>
+            <a class="btn btn-outline-light me-2" routerLink="login" *ngIf="!authService.isAutheticated">Login</a>
+            <a class="btn btn-outline-light me-2" *ngIf="authService.isAutheticated" (click) ="logOut()">LogOut</a>
           </form>
         </li>
       </ul>

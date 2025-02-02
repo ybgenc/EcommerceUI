@@ -30,7 +30,7 @@ export class UserService {
     return (await firstValueFrom(observable)) as Create_User;
   }
 
-  async submitForm(data: Login_User): Promise<any> {
+  async submitForm(data: Login_User, callBackFuction:() => void): Promise<any> {
     const observable: Observable<Login_User | TokenResponse> =
       await this.httpClientService.Post<Login_User | TokenResponse>(
         {
@@ -46,9 +46,10 @@ export class UserService {
       localStorage.setItem("accessToken" , tokenResponse.token.accessToken);
       this.toasterService.message('Login successful!','Success', {
       toasterAlertType : ToasterAlertType.Success,
-      position : ToasterPosition.TopRight
+      position : ToasterPosition.TopLeft
 
     });
+    callBackFuction();
     return tokenResponse;
   }
 }
