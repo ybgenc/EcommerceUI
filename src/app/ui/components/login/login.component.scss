@@ -51,7 +51,35 @@ input:focus {
     background-color: #9c27b0;
     border-color: #9c27b0;
 }
+.login-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .facebook-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1877F2;
+    color: white;
+    border: none;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .facebook-button:hover {
+    background-color: #165DB6;
+  }
+
+  svg {
+    fill: white;
+  }
 
 
 

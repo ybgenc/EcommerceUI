@@ -12,7 +12,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { SocialLoginModule } from '@abacritt/angularx-social-login';  // Import SocialLoginModule
 import { environment } from 'src/environments/environment';
 
@@ -52,6 +52,10 @@ import { environment } from 'src/environments/environment';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider("961329149205-on48ppdfo85dtktm6fnnsfl0sesdvj6h.apps.googleusercontent.com")
+          },
+          {
+            id:FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider("541111071590668")
           }
         ],
         onError: err => console.log(err)

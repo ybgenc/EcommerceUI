@@ -1,4 +1,4 @@
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -31,12 +31,26 @@ export class LoginComponent implements OnInit {
   ) {
     socialAuthService.authState.subscribe(async (user: SocialUser) => {
       this.spinner.show();
-      console.log(user);
-      await userService.googleLogin(user, () => {
-        this.authService.checkIdentity();
-        this.spinner.hide();
-        this.router.navigate(['admin'])
-      });
+      switch (user.provider){
+        case "GOOGLE":
+          await userService.googleLogin(user, () => {
+            console.log(user)
+            this.authService.checkIdentity();
+            this.spinner.hide();
+            this.router.navigate(['admin'])
+          });
+          break;
+        case "FACEBOOK":
+          await userService.facebookLogin(user, () => {
+            console.log(user)
+            this.authService.checkIdentity();
+            this.spinner.hide();
+            this.router.navigate(['admin'])
+          });
+          break;
+
+      }
+
     });
   }
 
@@ -58,5 +72,9 @@ export class LoginComponent implements OnInit {
       });
       this.spinner.hide();
     });
+  }
+
+  facebookLogin(){
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID)
   }
 }
