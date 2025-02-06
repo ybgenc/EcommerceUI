@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 
 
+
 @NgModule({
   declarations: [
     
@@ -15,7 +16,7 @@ import { RouterModule } from '@angular/router';
     //ReactiveFormsModule,
     RouterModule.forChild([
       {path:"", component: LoginComponent}
-    ])
+    ]),
 
   ]
 })

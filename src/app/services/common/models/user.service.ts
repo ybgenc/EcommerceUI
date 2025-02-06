@@ -8,6 +8,7 @@ import { Token } from 'src/app/contract/token/token';
 import { ToasterAlertType, ToasterCustomService, ToasterPosition } from '../../ui/toaster-custom.service';
 import { Position } from '../../admin/alertify.service';
 import { TokenResponse } from 'src/app/contract/token/tokenResponse';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root',
@@ -51,5 +52,24 @@ export class UserService {
     });
     callBackFuction();
     return tokenResponse;
+  }
+
+  async googleLogin(user : SocialUser, callBackFuction? : () => void) : Promise<any>{
+   const observable : Observable<SocialUser | TokenResponse> = this.httpClientService.Post<SocialUser | TokenResponse>({
+      controller: 'users',
+      action: 'google-login'
+    },user);
+
+    const tokenResponse : TokenResponse = await firstValueFrom(observable) as TokenResponse;
+
+    if(tokenResponse)
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken)
+
+    this.toasterService.message('Google login successful', 'Success', {
+      toasterAlertType : ToasterAlertType.Success,
+      position : ToasterPosition.TopLeft
+    })
+
+    callBackFuction();
   }
 }

@@ -13,6 +13,8 @@ import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';  // Import SocialLoginModule
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx
         tokenGetter: () => localStorage.getItem("accessToken"),
         allowedDomains: ["localhost:4200"]  
       }
-    })
+    }),
+    SocialLoginModule
+
   ],
   providers: [
     { provide: "baseUrl", useValue: "https://localhost:7148/api", multi: true },
@@ -47,7 +51,7 @@ import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider("902986185803-4dl068flq4g27bpj299khhlq7es3g988.apps.googleusercontent.com")
+            provider: new GoogleLoginProvider("961329149205-on48ppdfo85dtktm6fnnsfl0sesdvj6h.apps.googleusercontent.com")
           }
         ],
         onError: err => console.log(err)
