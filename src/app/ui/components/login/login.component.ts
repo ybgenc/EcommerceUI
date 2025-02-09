@@ -2,11 +2,11 @@ import { FacebookLoginProvider, SocialAuthService, SocialUser } from '@abacritt/
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
-import { firstValueFrom, Observable, observable } from 'rxjs';
+import {  NgxSpinnerService } from 'ngx-spinner';
 import { Login_User } from 'src/app/contract/users/login-user';
 import { AuthService } from 'src/app/services/common/auth.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
+import { AuthUserService } from 'src/app/services/common/models/auth-user.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { ToasterCustomService } from 'src/app/services/ui/toaster-custom.service';
 
@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpClientService: HttpClientService,
-    private toasterService: ToasterCustomService,
-    private userService: UserService,
+    private authUserService: AuthUserService,
     private authService: AuthService,
     private spinner: NgxSpinnerService,
     private activateddRoute: ActivatedRoute,
@@ -33,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.spinner.show();
       switch (user.provider){
         case "GOOGLE":
-          await userService.googleLogin(user, () => {
+          await authUserService.googleLogin(user, () => {
             console.log(user)
             this.authService.checkIdentity();
             this.spinner.hide();
@@ -41,16 +39,14 @@ export class LoginComponent implements OnInit {
           });
           break;
         case "FACEBOOK":
-          await userService.facebookLogin(user, () => {
+          await authUserService.facebookLogin(user, () => {
             console.log(user)
             this.authService.checkIdentity();
             this.spinner.hide();
             this.router.navigate(['admin'])
           });
           break;
-
       }
-
     });
   }
 
@@ -60,15 +56,18 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
+
   async submitForm(data: Login_User) {
     this.spinner.show();
-    await this.userService.submitForm(data, () => {
+    await this.authUserService.submitForm(data, () => {
       this.authService.checkIdentity();
       this.activateddRoute.queryParams.subscribe((params) => {
         const returnUrl: string = params['returnUrl'];
         if (returnUrl) {
           this.router.navigate([returnUrl]);
         }
+        else
+          this.router.navigate(['admin'])
       });
       this.spinner.hide();
     });
