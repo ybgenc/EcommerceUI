@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
       switch (user.provider){
         case "GOOGLE":
           await authUserService.googleLogin(user, () => {
-            console.log(user)
             this.authService.checkIdentity();
             this.spinner.hide();
             this.router.navigate(['admin'])
@@ -40,12 +39,13 @@ export class LoginComponent implements OnInit {
           break;
         case "FACEBOOK":
           await authUserService.facebookLogin(user, () => {
-            console.log(user)
             this.authService.checkIdentity();
             this.spinner.hide();
             this.router.navigate(['admin'])
           });
           break;
+        default :
+          this.spinner.hide()
       }
     });
   }
