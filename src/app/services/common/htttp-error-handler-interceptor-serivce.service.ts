@@ -9,13 +9,16 @@ import { Injectable } from '@angular/core';
 import { error } from 'console';
 import { catchError, Observable, of } from 'rxjs';
 import { ToasterAlertType, ToasterCustomService, ToasterPosition } from '../ui/toaster-custom.service';
+import { AuthUserService } from './models/auth-user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HtttpErrorHandlerInterceptorSerivceService
   implements HttpInterceptor {
-  constructor(private toasterService: ToasterCustomService) { }
+  constructor(private toasterService: ToasterCustomService,
+    private authUserService : AuthUserService
+  ) { }
 
   intercept(
     req: HttpRequest<any>,
@@ -60,6 +63,7 @@ export class HtttpErrorHandlerInterceptorSerivceService
                 position: ToasterPosition.TopCenter,
               }
             );
+            this.authUserService.refreshTokenLogin(localStorage.getItem('refreshToken')).then();
             break;
           default:
             this.toasterService.message(
