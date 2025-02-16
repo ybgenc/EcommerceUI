@@ -35,8 +35,8 @@ import { HtttpErrorHandlerInterceptorSerivceService } from './services/common/ht
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => localStorage.getItem('accessToken'),
-        allowedDomains: ['localhost:4200'],
+        tokenGetter: () => localStorage.getItem("accessToken"),
+        allowedDomains: ["localhost:7148"],
       },
     }),
     SocialLoginModule,
