@@ -24,6 +24,39 @@ td {
   border-bottom: 1px solid #ddd;
   transition: background-color 0.3s ease;
 }
+td.description-cell {
+  max-width: 150px;  
+  white-space: nowrap;  
+  overflow: hidden;  
+  text-overflow: ellipsis; 
+  cursor: pointer;  
+}
+
+td.description-cell.expanded {
+  white-space: normal;  
+  overflow: auto;  
+  max-width: 50%;  
+  word-wrap: break-word;  
+  background-color: rgba(0, 0, 0, 0.05);  
+  padding: 8px;
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;  
+    white-space: nowrap;
+  }
+
+
+}
+
+
+  th, td {
+    min-width: 80px; 
+  }
+
+
 
 tr:nth-child(even) {
   background-color: transparent; 
@@ -51,6 +84,9 @@ mat-icon {
   align-items: center; 
   justify-content: center; 
 }
+
+
+
 
 
 

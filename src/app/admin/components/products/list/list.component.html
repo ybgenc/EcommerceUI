@@ -12,6 +12,25 @@
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td 
+        mat-cell 
+        *matCellDef="let element" 
+        class="description-cell" 
+        (click)="toggleDescription(element)"
+        [ngClass]="{'expanded': element.isExpanded}"
+      >
+        {{ element.description }}
+      </td>
+    </ng-container>
+    
+
     <ng-container matColumnDef="stock">
       <th mat-header-cell *matHeaderCellDef>Stock</th>
       <td mat-cell *matCellDef="let element">{{ element.stock }}</td>
@@ -55,7 +74,7 @@
         mat-cell
         *matCellDef="let element"
         appUpdate
-        [rowData]="{ id: element.id, name: element.name, stock: element.stock, price: element.price }"
+        [rowData]="{ id: element.id, name: element.name, stock: element.stock, price: element.price, title: element.title, description: element.description}"
         controller="Product"
         (refreshTable)="getProducts()" 
       >
@@ -85,7 +104,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <!-- Sayfalama -->
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons

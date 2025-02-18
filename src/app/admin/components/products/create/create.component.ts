@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateDialogComponent } from 'src/app/dialogs/create-dialog/create-dialog.component';
 import { Create_Product } from 'src/app/contract/create-product';
 import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
+import { title } from 'process';
 
 @Component({
   selector: 'app-create',
@@ -24,13 +25,15 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openCreateDialog(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement) {
+  openCreateDialog(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement,title:HTMLInputElement,description:HTMLInputElement) {
     const dialogRef = this.dialog.open(CreateDialogComponent, {
       width: '400px',
       data: {
         name: name.value,
         stock: stock.value,
         price: price.value,
+        title: title.value,
+        description:description.value
       }
     });
 

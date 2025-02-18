@@ -24,6 +24,8 @@ export class ListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'position',
     'name',
+    'title',
+    'description',
     'stock',
     'price',
     'createdDate',
@@ -40,11 +42,11 @@ export class ListComponent implements OnInit, AfterViewInit {
   constructor(
     private productService: ProductService,
     private alertifyService: AlertifyService,
-    private dialogService : DialogService,
+    private dialogService: DialogService,
     private spinner: NgxSpinnerService,
     public datePipe: DatePipe,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
     if (this.dataSource) {
@@ -75,6 +77,8 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
   
 
+
+
   async ngOnInit() {
     await this.getProducts();
   }
@@ -100,4 +104,9 @@ export class ListComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  toggleDescription(element: any) {
+    element.isExpanded = !element.isExpanded;
+  }
+
 }

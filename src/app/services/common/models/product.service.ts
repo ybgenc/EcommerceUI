@@ -43,25 +43,27 @@ export class ProductService {
   }
 
 
-  async Get(
-    successCallback: () => void,
-    errorCallback: (errorMessage: string) => void
-  ): Promise<List_Product[]> {
-    try {
-      const response = await this.httpClientService
-        .Get<{ products: List_Product[] }>({
-          controller: 'Product',
-        })
-        .toPromise();
+
+
+   async Get(
+     successCallback: () => void,
+     errorCallback: (errorMessage: string) => void
+   ): Promise<List_Product[]> {
+     try {
+       const response = await this.httpClientService
+         .Get<{ products: List_Product[] }>({
+           controller: 'Product',
+         })
+         .toPromise();
   
-      successCallback();
-      return response.products; 
-    } 
-    catch (errorResponse) {
-      errorCallback(errorResponse.message);
-      return []; 
-    }
-  }
+       successCallback();
+       return response.products; 
+     } 
+     catch (errorResponse) {
+       errorCallback(errorResponse.message);
+       return []; 
+     }
+   }
   
 
   async Delete(id: string){
@@ -94,6 +96,25 @@ async DeleteImage(id: string, imageId: string) {
 }
 
 
+async showCaseImage(imageId: string, productId: string, successCallback?: () => void) : Promise<any>{
+  console.log("ps image", imageId,"ps product", productId)
+  const fullEndpoint = `https://localhost:7148/api/Product/selectShowcaseImage?imageId=${imageId}&productId=${productId}`
 
+  const showCaseObservable: Observable<any> = this.httpClientService.Get(
+      { 
+        fullEndpoint : fullEndpoint
+      });
 
+      await firstValueFrom(showCaseObservable);
+     successCallback(); 
+  } 
 }
+
+
+
+
+
+
+
+
+

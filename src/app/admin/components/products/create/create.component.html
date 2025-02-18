@@ -2,6 +2,14 @@
   <mat-label>Name</mat-label>
   <input matInput #txtName>
 </mat-form-field>
+<mat-form-field class="full-width">
+  <mat-label>Title</mat-label>
+  <input matInput #txtTitle>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <mat-label>Description</mat-label>
+  <input matInput #txtDescription>
+</mat-form-field>
 
 <mat-form-field class="full-width">
   <mat-label>Stock</mat-label>
@@ -13,8 +21,9 @@
   <input matInput type="number" min="0" value="0" #txtPrice>
 </mat-form-field>
 
+
 <div class="text-center">
-  <button class="btn btn-gradient-custom" (click)="openCreateDialog(txtName, txtStock, txtPrice)" type="submit">
+  <button class="btn btn-gradient-custom" (click)="openCreateDialog(txtName, txtStock, txtPrice, txtDescription,txtTitle)" type="submit">
     Create Product
   </button>
 </div>

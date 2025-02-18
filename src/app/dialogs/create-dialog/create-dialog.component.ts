@@ -19,7 +19,7 @@ export class CreateDialogComponent {
     private spinner: NgxSpinnerService,
     private alertify: AlertifyService,
     private dialogRef: MatDialogRef<CreateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { name: string, stock: string, price: string }
+    @Inject(MAT_DIALOG_DATA) public data: { name: string, stock: string, price: string, title:string,description:string }
   ) {}
 
   close() {
@@ -31,6 +31,8 @@ export class CreateDialogComponent {
     create_product.name = this.data.name;
     create_product.stock = parseInt(this.data.stock);
     create_product.price = parseFloat(this.data.price);
+    create_product.description = this.data.description;
+    create_product.title = this.data.title
 
     this.spinner.show();
 

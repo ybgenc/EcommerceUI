@@ -56,6 +56,16 @@ export class ProductImageUploadDialogComponent
       },
     });
   }
+
+  async selectShowcaseImage(imageId:string){
+    console.log("dialog image", imageId,"ps product", this.data)
+
+    this.spinner.show()
+    await this.productService.showCaseImage(imageId, this.data as string, () => {
+      this.spinner.hide()
+    })
+
+  }
 }
 
 export enum ProductImageUploadState {
