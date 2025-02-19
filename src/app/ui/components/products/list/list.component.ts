@@ -31,6 +31,7 @@ export class ListComponent implements OnInit {
   totalProductCount: number;
   totalPageCount: number;
   baseStorageUrl: BaseStorageUrl;
+  baseUrl : string;
 
   async ngOnInit() {
     this.baseStorageUrl = await this.baseUrlService.getBaseStorageUrl();
@@ -51,26 +52,32 @@ export class ListComponent implements OnInit {
 
       this.products = ProductList;
 
-      this.products = this.products.map<List_Product>((p) => {
-        const productImageFile = p.productImageFile;
-        const showcaseImagePath =
-          productImageFile?.find((img) => img.showcase)?.path || '';
-
+      this.products = this.products.map<List_Product>(p => {
         const listProduct: List_Product = {
           id: p.id,
           createdDate: p.createdDate,
+          imagePath: p.productImageFiles?.length ? p.productImageFiles.find(img => img.showCase)?.path || "" : "",
           name: p.name,
           price: p.price,
           stock: p.stock,
           updatedDate: p.updatedDate,
+          productImageFiles: p.productImageFiles,
           title: p.title,
           description: p.description,
-          productImageFile: productImageFile,
-          imagePath: showcaseImagePath,
         };
+
+
+        console.log(`${this.baseStorageUrl.url}/${listProduct.imagePath.replace(/\//g, '\\')}`);
+
         return listProduct;
+
       });
+      console.log(this.products)
+
+      
     });
+
+
   }
 
   setHoveredIndex(index: number) {

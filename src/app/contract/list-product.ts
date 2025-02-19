@@ -10,6 +10,6 @@ export class List_Product {
     description:string;
     createdDate :Date;
     updatedDate :Date;
-    productImageFile? : List_Product_Image[];
-    imagePath:string
+    productImageFiles? : List_Product_Image[];
+    imagePath:string;
 }

@@ -1,11 +1,11 @@
 <div class="listComponent" class="container mt-4">
   <div class="row g-4">
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let product of products; let i = index" 
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"  *ngFor="let product of products; let i = index" 
          (mouseenter)="setHoveredIndex(i)" (mouseleave)="resetHoveredIndex()">
       <div class="card shadow-lg border-0 rounded-4 h-100">
 
-        <img width="250" height="250" *ngIf="!product.productImageFile?.length" src="assets/defaultImage.jpg"  class="card-img-top" alt="...">
-        <img width="250" height="250" *ngIf="product.productImageFile?.length" src="{{baseStorageUrl.url}}/{{product.imagePath}}" class="card-img-top" alt="...">
+        <img width="250" height="250" *ngIf="!product.productImageFiles?.length" src="assets/defaultImage.jpg"  class="card-img-top" alt="...">
+        <img width="250" height="250" *ngIf="product.productImageFiles?.length" src="{{this.baseStorageUrl.url}}/{{product.imagePath}}" class="card-img-top" alt="...">
 
 
         <div class="card-body text-center d-flex flex-column">

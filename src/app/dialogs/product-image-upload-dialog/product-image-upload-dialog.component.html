@@ -6,7 +6,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
       <div class="col" *ngFor="let image of images">
         <div class="product-image-card" >
-          <input type="radio"  name="img" (click)="selectShowcaseImage(image.id)"  (checked)="image.showcase"> Showcase
+          <input type="radio"  name="img" (click)="selectShowcaseImage(image.id)"  (checked)="image.showCase"> Showcase
           <img mat-card-image [src]="image.path" alt="Uploaded Image" />
           <div class="mat-card-actions">
             <button mat-icon-button class="delete-button" (click)="deleteProductImage(image.id)">

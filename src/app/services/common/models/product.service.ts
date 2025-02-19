@@ -97,7 +97,6 @@ async DeleteImage(id: string, imageId: string) {
 
 
 async showCaseImage(imageId: string, productId: string, successCallback?: () => void) : Promise<any>{
-  console.log("ps image", imageId,"ps product", productId)
   const fullEndpoint = `https://localhost:7148/api/Product/selectShowcaseImage?imageId=${imageId}&productId=${productId}`
 
   const showCaseObservable: Observable<any> = this.httpClientService.Get(
