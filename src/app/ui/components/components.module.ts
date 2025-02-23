@@ -7,6 +7,7 @@ import { BasketsModule } from './baskets/baskets.module';
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BasketsComponent } from './baskets/baskets.component';
 
 
 
@@ -22,6 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterModule,
     //LoginModule,
 
+  ],
+  exports:[
+    BasketsModule
   ]
 })
 export class ComponentsModule { }

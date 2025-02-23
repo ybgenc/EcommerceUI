@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClientService } from '../http-client.service';
-import { Create_Product } from 'src/app/contract/create-product';
+import { Create_Product } from 'src/app/contract/product/create-product';
 import { HttpErrorResponse } from '@angular/common/http';
-import { List_Product } from 'src/app/contract/list-product';
 import { first, firstValueFrom, Observable } from 'rxjs';
 import { List_Product_Image } from 'src/app/contract/list-product-image';
+import { List_Product } from 'src/app/contract/product/list-product';
 
 @Injectable({
   providedIn: 'root',
@@ -42,78 +42,73 @@ export class ProductService {
       );
   }
 
+  async Get(
+    successCallback: () => void,
+    errorCallback: (errorMessage: string) => void
+  ): Promise<List_Product[]> {
+    try {
+      const response = await this.httpClientService
+        .Get<{ products: List_Product[] }>({
+          controller: 'Product',
+        })
+        .toPromise();
 
+      successCallback();
+      return response.products;
+    } catch (errorResponse) {
+      errorCallback(errorResponse.message);
+      return [];
+    }
+  }
 
-
-   async Get(
-     successCallback: () => void,
-     errorCallback: (errorMessage: string) => void
-   ): Promise<List_Product[]> {
-     try {
-       const response = await this.httpClientService
-         .Get<{ products: List_Product[] }>({
-           controller: 'Product',
-         })
-         .toPromise();
-  
-       successCallback();
-       return response.products; 
-     } 
-     catch (errorResponse) {
-       errorCallback(errorResponse.message);
-       return []; 
-     }
-   }
-  
-
-  async Delete(id: string){
-    const deleteObs : Observable<any> = this.httpClientService.Delete<any>({
-      controller: 'Product',
-    },id);;
+  async Delete(id: string) {
+    const deleteObs: Observable<any> = this.httpClientService.Delete<any>(
+      {
+        controller: 'Product',
+      },
+      id
+    );
     await firstValueFrom(deleteObs);
   }
 
   async getImages(id: string): Promise<List_Product_Image[]> {
-    const getObservable: Observable<List_Product_Image[]> = this.httpClientService.Get<List_Product_Image[]>({
-        action: 'GetProductImage',
-        controller: 'product',
-    }, id);
+    const getObservable: Observable<List_Product_Image[]> =
+      this.httpClientService.Get<List_Product_Image[]>(
+        {
+          action: 'GetProductImage',
+          controller: 'product',
+        },
+        id
+      );
 
     return await firstValueFrom(getObservable);
+  }
+
+  async DeleteImage(id: string, imageId: string) {
+    const fullEndpoint = `https://localhost:7148/api/Product/DeleteProductImage/${id}?imageId=${imageId}`; // todo => Fix it
+
+    const deleteObservable = this.httpClientService.Delete(
+      {
+        fullEndpoint: fullEndpoint,
+      },
+      id
+    );
+
+    return await firstValueFrom(deleteObservable);
+  }
+
+  async showCaseImage(
+    imageId: string,
+    productId: string,
+    successCallback?: () => void
+  ): Promise<any> {
+    const fullEndpoint = `https://localhost:7148/api/Product/selectShowcaseImage?imageId=${imageId}&productId=${productId}`; // TODO: => fix it
+
+    const showCaseObservable: Observable<any> = this.httpClientService.Get({
+      fullEndpoint: fullEndpoint,
+    });
+
+    await firstValueFrom(showCaseObservable);
+    successCallback();
+  }
 }
-
-async DeleteImage(id: string, imageId: string) {
-  const fullEndpoint = `https://localhost:7148/api/Product/DeleteProductImage/${id}?imageId=${(imageId)}`; // todo => Fix it
-
-  const deleteObservable = this.httpClientService.Delete(
-    {
-      fullEndpoint: fullEndpoint, 
-    },
-    id
-  );
-  
-  return await firstValueFrom(deleteObservable);
-}
-
-
-async showCaseImage(imageId: string, productId: string, successCallback?: () => void) : Promise<any>{
-  const fullEndpoint = `https://localhost:7148/api/Product/selectShowcaseImage?imageId=${imageId}&productId=${productId}`
-
-  const showCaseObservable: Observable<any> = this.httpClientService.Get(
-      { 
-        fullEndpoint : fullEndpoint
-      });
-
-      await firstValueFrom(showCaseObservable);
-     successCallback(); 
-  } 
-}
-
-
-
-
-
-
-
-
-

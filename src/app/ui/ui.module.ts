@@ -12,6 +12,9 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     
 
+  ],
+  exports:[
+    ComponentsModule
   ]
 })
 export class UiModule { }

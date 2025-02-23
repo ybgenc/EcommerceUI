@@ -1,1 +1,63 @@
-<p>baskets works!</p>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="basketModal" tabindex="-1" aria-labelledby="basketModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content basket-modal">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h1 class="modal-title">Your Shopping Basket</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table basket-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of basketItem; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price | currency:'USD' }}</td>
+                <td>
+                  <input type="number"  min="1" [value]="item.quantity"  class="quantity-input" >
+                </td>
+                <td>{{ item.price * item.quantity | currency:'USD' }}</td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="deleteBasketItem()">
+                    <i class="bi bi-trash"></i>
+                    
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <div class="d-flex justify-content-between w-100 align-items-center">
+          <h5 class="total-price">Total: <strong>{{ getTotal() | currency:'USD' }}</strong></h5>
+          <div>
+            <button type="button" class="btn btn-warning mr-3" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success">Checkout</button>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>

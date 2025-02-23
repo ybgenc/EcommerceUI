@@ -20,6 +20,7 @@ import {
 import { SocialLoginModule } from '@abacritt/angularx-social-login'; // Import SocialLoginModule
 import { environment } from 'src/environments/environment';
 import { HtttpErrorHandlerInterceptorSerivceService } from './services/common/htttp-error-handler-interceptor-serivce.service';
+import { BasketsComponent } from './ui/components/baskets/baskets.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],

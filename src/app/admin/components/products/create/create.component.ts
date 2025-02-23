@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateDialogComponent } from 'src/app/dialogs/create-dialog/create-dialog.component';
-import { Create_Product } from 'src/app/contract/create-product';
+import { Create_Product } from 'src/app/contract/product/create-product';
 import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { title } from 'process';
 
@@ -11,7 +11,6 @@ import { title } from 'process';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
-
   @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
   @Output() fileUploadOptions: Partial<FileUploadOptions> = {
     action: 'upload',
@@ -25,7 +24,13 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openCreateDialog(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement,title:HTMLInputElement,description:HTMLInputElement) {
+  openCreateDialog(
+    name: HTMLInputElement,
+    stock: HTMLInputElement,
+    price: HTMLInputElement,
+    title: HTMLInputElement,
+    description: HTMLInputElement
+  ) {
     const dialogRef = this.dialog.open(CreateDialogComponent, {
       width: '400px',
       data: {
@@ -33,30 +38,28 @@ export class CreateComponent implements OnInit {
         stock: stock.value,
         price: price.value,
         title: title.value,
-        description:description.value
-      }
+        description: description.value,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-
         console.log('Product created:', result);
       }
     });
   }
-  
+
   // Create(
   //   name: HTMLInputElement,
   //   stock: HTMLInputElement,
   //   price: HTMLInputElement
   // ) {
- 
+
   //   const create_product: Create_Product = new Create_Product();
   //   create_product.name = name.value;
   //   create_product.stock = parseInt(stock.value);
   //   create_product.price = parseFloat(price.value);
 
-    
   //   this.productService.Create(create_product, () => {
   //     this.spinner.hide();
   //     this.alertify.message('Product created successfully', {
@@ -74,8 +77,4 @@ export class CreateComponent implements OnInit {
   //     })
   //   });
   // }
-
-
-
-  }
-
+}

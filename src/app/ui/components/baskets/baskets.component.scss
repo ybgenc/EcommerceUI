@@ -1,0 +1,81 @@
+// Sepet Modalı
+.modal {
+    background-color: #fff8e1(0, 0, 0, 0.5); /* Greyish overlay */
+  }
+
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff8e1; /* Light grey background */
+
+  }
+  
+  // Butonlar
+  .open-basket {
+    margin-bottom: 15px;
+  }
+  
+  .basket-table {
+    width: 100%;
+    text-align: center;
+
+  
+    th {
+      background-color: #800080;
+      color: white;
+      padding: 12px;
+      text-transform: uppercase;
+    }
+  
+    td {
+      padding: 10px;
+      background-color: #fff8e1; /* Light grey background */
+
+    }
+  
+    .quantity-input {
+      width: 60px;
+      text-align: center;
+    }
+  
+    button {
+      margin-top: -5px;
+    }
+  }
+  
+  // Responsive Tasarım
+  @media (max-width: 768px) {
+    .basket-table {
+      font-size: 14px;
+  
+      th, td {
+        padding: 8px;
+      }
+    }
+  
+    .modal-dialog {
+      max-width: 90%;
+    }
+    
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+  }
+  
+  .total-price {
+    margin: 0;
+    font-size: 1.2rem; /* Make the total price larger if needed */
+    text-align: left;
+  }
+  
+
+  
+  button:first-of-type {
+    margin-right: 10px; /* For the 'Close' button, add right margin */
+  }
+  
+  
+  

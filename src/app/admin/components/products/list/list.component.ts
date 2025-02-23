@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { List_Product } from 'src/app/contract/list-product';
 import {
   AlertifyService,
   Position,
@@ -14,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UpdateDialogComponent } from 'src/app/dialogs/update-dialog/update-dialog.component';
 import { DialogService } from 'src/app/services/common/dialog.service';
 import { ProductImageUploadDialogComponent } from 'src/app/dialogs/product-image-upload-dialog/product-image-upload-dialog.component';
+import { List_Product } from 'src/app/contract/product/list-product';
 
 @Component({
   selector: 'app-list',

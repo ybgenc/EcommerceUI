@@ -55,6 +55,7 @@
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
+
           <form class="d-flex">
           <!-- <form class="d-flex" role="search">
             <input
@@ -62,10 +63,11 @@
               type="search"
               placeholder="Search"
               aria-label="Search"
-            />
-            <button class="btn btn-gradient-custom" type="submit">
-              Search
-            </button> -->
+            /> -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basketModal">
+              Basket
+            </button>
+            
             <a class="btn btn-outline-light me-2" routerLink="admin" *ngIf="authService.isAutheticated">Admin</a>
             <a class="btn btn-outline-light me-2" routerLink="register" *ngIf="!authService.isAutheticated">SignUp</a>
             <a class="btn btn-outline-light me-2" routerLink="login" *ngIf="!authService.isAutheticated">Login</a>
@@ -82,6 +84,8 @@
   size="default"
   type="square-jelly-box"
 ></ngx-spinner>
+<app-baskets></app-baskets>
+
 <div class="PageContent">
   <router-outlet></router-outlet>
 </div>

@@ -1,4 +1,4 @@
-import { List_Product_Image } from "./list-product-image";
+import { List_Product_Image } from "../list-product-image";
 
 export class List_Product {
 
