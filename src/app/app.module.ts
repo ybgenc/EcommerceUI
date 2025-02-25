@@ -17,13 +17,12 @@ import {
   GoogleLoginProvider,
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
-import { SocialLoginModule } from '@abacritt/angularx-social-login'; // Import SocialLoginModule
-import { environment } from 'src/environments/environment';
-import { HtttpErrorHandlerInterceptorSerivceService } from './services/common/htttp-error-handler-interceptor-serivce.service';
-import { BasketsComponent } from './ui/components/baskets/baskets.component';
+import { SocialLoginModule } from '@abacritt/angularx-social-login'; 
+import { HtttpErrorHandlerInterceptorService } from './services/common/htttp-error-handler-interceptor.service';
+import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, DynamicLoadComponentDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,8 +35,8 @@ import { BasketsComponent } from './ui/components/baskets/baskets.component';
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => localStorage.getItem("accessToken"),
-        allowedDomains: ["localhost:7148"],
+        tokenGetter: () => localStorage.getItem('accessToken'),
+        allowedDomains: ['localhost:7148'],
       },
     }),
     SocialLoginModule,
@@ -66,7 +65,7 @@ import { BasketsComponent } from './ui/components/baskets/baskets.component';
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: HtttpErrorHandlerInterceptorSerivceService,
+      useClass: HtttpErrorHandlerInterceptorService,
       multi: true,
     },
   ],

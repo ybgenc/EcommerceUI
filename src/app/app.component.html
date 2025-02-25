@@ -64,7 +64,7 @@
               placeholder="Search"
               aria-label="Search"
             /> -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basketModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basketModal" (click)="loadComponent()" >
               Basket
             </button>
             
@@ -84,7 +84,18 @@
   size="default"
   type="square-jelly-box"
 ></ngx-spinner>
-<app-baskets></app-baskets>
+<div
+  class="modal fade"
+  id="basketModal"
+  tabindex="-1"
+  aria-labelledby="basketModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+<ng-template appDynamicLoadComponent></ng-template>
+  </div>
+  </div>  
+<!-- <app-baskets></app-baskets> -->
 
 <div class="PageContent">
   <router-outlet></router-outlet>

@@ -14,10 +14,10 @@ import { AuthUserService } from './models/auth-user.service';
 @Injectable({
   providedIn: 'root',
 })
-export class HtttpErrorHandlerInterceptorSerivceService
+export class HtttpErrorHandlerInterceptorService
   implements HttpInterceptor {
   constructor(private toasterService: ToasterCustomService,
-    private authUserService : AuthUserService
+    private authUserService : AuthUserService,
   ) { }
 
   intercept(
