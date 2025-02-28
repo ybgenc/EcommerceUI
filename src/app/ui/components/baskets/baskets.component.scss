@@ -29,13 +29,18 @@
   
     td {
       padding: 10px;
-      background-color: #fff8e1; /* Light grey background */
+      background-color: #fff8e1; 
 
     }
   
     .quantity-input {
       width: 60px;
+      height: 30px;
+      background-color: #fff8e1; 
+      border: 1px solid #800080 ;
+      border-radius: 5px;
       text-align: center;
+
     }
   
     button {

@@ -7,19 +7,21 @@ export class DynamicComponentLoadingService {
 
   constructor() { }
 
-  async loadComponent(componentName : ComponentName, viewContainerRef : ViewContainerRef ){
-    let _component : any = null;
-
-    switch(componentName){
+  async loadComponent(componentName: ComponentName, viewContainerRef: ViewContainerRef) {
+  
+    let _component: any = null;
+  
+    switch (componentName) {
       case ComponentName.BasketsComponent:
-        _component = (await import("../../ui/components/baskets/baskets.component")).BasketsComponent
+        const basketModule = await import("../../ui/components/baskets/baskets.component");
+        _component = basketModule.BasketsComponent;
     }
-
-    viewContainerRef.clear()
-    return viewContainerRef.createComponent(_component)
+    viewContainerRef.clear();
+    return viewContainerRef.createComponent(_component);
   }
+  
 }
 
 export enum ComponentName {
-  BasketsComponent
+  BasketsComponent,
 }

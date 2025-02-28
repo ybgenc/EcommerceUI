@@ -3,4 +3,5 @@ export class Basket_Item_List {
       name :string;
       price :number ;
       quantity : number;
+      basketId : string;
 }

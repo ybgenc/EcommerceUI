@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
     private signalRService: SignalRService
   ) {
     signalRService.start(hubUrls.ProductHub);
+    signalRService.start(hubUrls.OrderHub)
   }
 
   ngOnInit(): void {
@@ -31,5 +32,13 @@ export class DashboardComponent implements OnInit {
         });
       }
     );
+    this.signalRService.on(
+      ReceiveFunctions.OrderAddedMessage,(message : string) => {
+        this.toasterService.message(message,'Order Added', {
+          toasterAlertType : ToasterAlertType.Info,
+          position : ToasterPosition.TopRight
+        })
+      }
+    )
   }
 }

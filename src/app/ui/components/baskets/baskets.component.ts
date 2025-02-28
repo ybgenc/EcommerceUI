@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Add_Basket_Item } from 'src/app/contract/basket/add-basket-item';
 import { Basket_Item_List } from 'src/app/contract/basket/basket-item-list';
 import { Update_Basket_Item } from 'src/app/contract/basket/update-basket-item';
@@ -10,7 +11,7 @@ declare var $:any
   styleUrls: ['./baskets.component.scss'],
 })
 export class BasketsComponent implements OnInit {
-  constructor(private basketService: BasketService) {}
+  constructor(private basketService: BasketService, private router : Router) {}
 
   basketItem?: Basket_Item_List[];
   item : any
@@ -19,18 +20,17 @@ export class BasketsComponent implements OnInit {
     const basketItem: Basket_Item_List[] =
       await this.basketService.getBasketItems();
       this.basketItem = basketItem;
-      this.basketItem = this.basketItem.map<Basket_Item_List>(b => {
-        console.log("before map", b); // Checking the structure of the original object
-      
+      this.basketItem = this.basketItem.map<Basket_Item_List>(b => {      
         const basketItemList: Basket_Item_List = {
           basketItemId: b.basketItemId,
           name: b.name,
           price: b.price,
-          quantity: b.quantity
-        };
-        
+          quantity: b.quantity,
+          basketId: b.basketId
+        };        
         return basketItemList;
       });
+
 
   }
 
@@ -61,6 +61,7 @@ export class BasketsComponent implements OnInit {
     }
     return this.basketItem.reduce((total, item) => total + item.price * item.quantity, 0);
   }
+
 
   
 }

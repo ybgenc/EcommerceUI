@@ -28,15 +28,15 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              <tr *ngFor="let item of basketItem; let i = index">
+            <tbody >
+              <tr  *ngFor="let item of basketItem; let i = index"  >
                 <td>{{ i + 1 }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.price | currency : "USD" }}</td>
                 <td>
-                  <input type="number" min="1"
+                  <input type="text" min="1"
                          [(ngModel)]="item.quantity"
-                         class="quantity-input" 
+                         class="quantity-input " 
                          (ngModelChange)="updateBasketItemQuantity(item.basketItemId, item.quantity)">
                 </td>
                 
@@ -62,16 +62,22 @@
             Total: <strong>{{ getTotal() | currency : "USD" }}</strong>
           </h5>
           <div>
-            <button
-              type="button"
-              class="btn btn-warning mr-3"
-              data-bs-dismiss="modal"
-            >
+            <!-- Close Butonu -->
+            <button type="button" class="btn btn-warning mr-3" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="button" class="btn btn-success">Checkout</button>
+      
+            <!-- Checkout Butonu (Yalnızca İlk Basket için) -->
+            <a
+              type="button"
+              class="btn btn-success"
+              [routerLink]="['/checkout', basketItem[0]?.basketId]" 
+              data-bs-dismiss="modal" >
+              Checkout
+            </a>
           </div>
         </div>
       </div>
+      
     </div>
 
