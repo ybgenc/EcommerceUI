@@ -69,9 +69,6 @@ export class ListComponent implements OnInit {
           description: p.description,
         };
 
-
-        console.log(`${this.baseStorageUrl.url}/${listProduct.imagePath.replace(/\//g, '\\')}`);
-
         return listProduct;
 
       });

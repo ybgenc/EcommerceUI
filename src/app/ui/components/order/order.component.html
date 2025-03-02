@@ -1,0 +1,53 @@
+<div class="orders-container">
+    <h2 class="title">Orders</h2>
+    <div id="accordion">
+      <div class="card" *ngFor="let order of orders">
+        <div class="card-header" [id]="'heading' + order.orderId">
+            <h5 class="mb-0 justify-content-between w-100" (click)="toggleOpen(order)">
+                <div class="col col-lg-6">
+                    <button class="btn btn-link " >
+                        <strong>Order number:</strong>  {{ order.orderId }}
+                      </button>
+                </div>
+
+                <div class="col-lg-6 dateDiv">
+                    <span class="order-date">{{ order.products[0]?.orderDate | date:'dd/MM/yyyy HH:mm' }}</span>
+                <p class="col-lg-2"><strong>Total:</strong> {{ getTotal(order) | currency:'USD' }}</p>
+
+              </div>
+            </h5>
+          </div>
+          
+  
+        <div [id]="'collapse' + order.orderId" [class.collapse]="!order.isOpen">
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of order.products">
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.price | currency:'USD' }}</td>
+                  <td>{{ product.quantity }}</td>
+                  <td>{{ product.price * product.quantity | currency:'USD' }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="order-footer">
+              <p class="col-lg-5"><strong>Address:</strong> {{ order.products[0]?.address }}</p>
+              <p class="col-lg-2"></p>
+              <p class="col-lg-5"><strong>Description:</strong> {{ order.products[0]?.description }}</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
