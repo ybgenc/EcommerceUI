@@ -44,10 +44,11 @@ export class CheckoutComponent implements OnInit {
     return this.basketItem.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
-  async  completePayment(Address : string, Description: string) {
+  async  completePayment(Address : string, Description: string, TotalPrice:number) {
     const order : Create_Order = new Create_Order()
     order.Address = Address
     order.Description = Description
+    order.TotalPrice = parseFloat(TotalPrice.toFixed(2))
     console.log(order)
     await this.orderService.completeOrder(order as Create_Order)
   }

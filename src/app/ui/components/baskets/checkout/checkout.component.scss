@@ -57,7 +57,7 @@ label{
 }
 
 button.btn {
-  background-color: #800080;
+  background-color: rgba(128, 0, 128); 
   color: white;
   border: none;
   border-radius: 5px;
@@ -82,7 +82,7 @@ button.btn:hover {
 }
 
 .payment-summary h3 {
-  color: #800080;
+  color: rgba(128, 0, 128); 
 }
 
 @media (max-width: 768px) {

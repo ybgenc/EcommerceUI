@@ -1,5 +1,6 @@
 export class Create_Order {
     Description : string;
-    Address : string
+    Address : string;
+    TotalPrice : Number;
 
 }

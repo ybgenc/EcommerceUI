@@ -11,7 +11,7 @@
     margin-bottom: 30px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-bottom: 1px solid #800080;
+    border-bottom: 1px solid rgba(128, 0, 128); 
     padding-bottom: 10px;
     font-family: 'Arial', sans-serif;
   }
@@ -19,14 +19,14 @@
 
   .card {
     background-color: white;
-    border: 3px solid #800080;
+    border: 3px solid rgba(128, 0, 128); 
     border-radius: 10px;
     margin-bottom: 15px;
   }
   
   .card-header {
     background-color: #fef9c7;
-    color: #800080;
+    color: rgba(128, 0, 128); 
     padding: 15px;
     cursor: pointer;
   }
@@ -39,7 +39,7 @@
   }
   
   .card-header .btn-link {
-    color: #800080;
+    color: rgba(128, 0, 128); 
     text-decoration: none;
   }
   
@@ -100,7 +100,7 @@
   }
   
   .order-date {
-    color: #800080;
+    color: rgba(128, 0, 128); 
     font-size: medium;
     font-weight: bold;
     margin-bottom: 10px;

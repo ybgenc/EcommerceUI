@@ -25,17 +25,17 @@ input {
 /* Odaklanma durumu */
 input:focus {
     background-color: transparent !important;  
-    border-color: #7b1fa2;  
+    border-color: rgba(128, 0, 128);  
     outline: none;  
 }
 /* Custom Checkbox Styling */
 .form-check-input:checked {
-    background-color: #6a1b9a !important;
-    border-color: #6a1b9a !important;
+    background-color: rgba(128, 0, 128)  !important;
+    border-color: rgba(128, 0, 128) !important;
 }
 
 .form-check-input:focus {
-    border-color: #6a1b9a !important; 
+    border-color:rgba(128, 0, 128) !important; 
     outline: none; /* Remove outline */
 }
 
@@ -45,7 +45,7 @@ input:focus {
 
 /* If you want to change the checkmark icon color */
 .form-check-input:checked::after {
-    background-color: #6a1b9a !important;
+    background-color: rgba(128, 0, 128) !important;
 }
 
 .register-card {
@@ -63,11 +63,9 @@ input:focus {
 
 /* Button styling */
 .btn-primary {
-    background-color: #6a1b9a;
-    border-color: #6a1b9a;
+    background-color: rgba(128, 0, 128);
 }
 
 .btn-primary:hover {
-    background-color: #9c27b0;
-    border-color: #9c27b0;
+    background-color: rgba(128, 0, 128); ;
 }

@@ -31,5 +31,14 @@ export class UserService {
     return (await firstValueFrom(observable)) as Create_User;
   }
 
+  async updatePassword(Password : string , UserId : string, ResetToken : string){
+    const newPassword : Observable<any> = this.httpClientService.Post({
+      controller:'users',
+      action:'update-password'
+    },{Password : Password, userId :UserId, resetToken : ResetToken})
+
+    await firstValueFrom(newPassword)
+  }
+
 
 }

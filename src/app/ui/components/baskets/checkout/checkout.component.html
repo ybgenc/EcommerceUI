@@ -44,8 +44,8 @@
     <div class="col-md-3">
       <div class="payment-summary card p-4">
         <h3 class="fw-bold text-dark">Amount to be Paid</h3>
-        <h3 class="text-primary">{{ getTotal() | currency:'USD' }}</h3>
-        <button class="btn w-100 mt-3" (click)="completePayment(txtAddress.value ,txtDescription.value)">Complete Order</button>
+        <h3 class="text-primary" txtTotalPrice>{{ getTotal() | currency:'USD' }}</h3>
+        <button class="btn w-100 mt-3" (click)="completePayment(txtAddress.value ,txtDescription.value, getTotal())">Complete Order</button>
       </div>
     </div>
   </div>

@@ -28,8 +28,10 @@
             <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">
                 Login
             </button>
-
-            <div class="login-buttons">
+            <a routerLink="/login/ForgotPassword" class="btn btn-link text-decoration-none">
+                Forgot Password?
+              </a>
+                          <div class="login-buttons">
                 <asl-google-signin-button></asl-google-signin-button>
                 <button class="facebook-button" (click)="facebookLogin()">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">

@@ -12,46 +12,43 @@ export class OrderComponent implements OnInit {
   orders: Order_List[] = [];
 
   constructor(private orderService: OrderService) {}
-
-  async ngOnInit() {
-    try {
-      const response = await this.orderService.getOrder();
-      console.log("📌 API Yanıtı:", response);
-
-      if (!response || response.length === 0) {
-        console.warn("⚠ API'den boş sipariş listesi döndü.");
-        this.orders = [];
-        return;
-      }
-
-      this.orders = response.map(o => ({
-        orderId: o.orderId,
-        products: o.products?.map(p => ({
-          name: p.name,
-          price: p.price,
-          quantity: p.quantity,
-          description: p.description,
-          address: p.address,
-          orderDate: new Date(p.orderDate),
-        })) ?? [],
-        isOpen: false // Collapse durumu
-      })) as Order_List[];
-
-      console.log("✔ Siparişler işlendi:", this.orders);
-    } catch (error) {
-      console.error("❌ Siparişleri alırken hata oluştu:", error);
-    }
+  ngOnInit(): void {
   }
 
-  toggleOpen(order: any): void {
-    order.isOpen = !order.isOpen; // Collapse açma/kapama işlemi
-  }
+  // async ngOnInit() {
+  //   try {
+  //     const response = await this.orderService.getOrder();
+  //     if (!response || response.length === 0) {
+  //       this.orders = [];
+  //       return;
+  //     }
 
-  getTotal(order: Order_List) {
-    if (!order.products || order.products.length === 0) {
-      return 0;
-    }
+  //     this.orders = response.map(o => ({
+  //       orderId: o.orderId,
+  //       products: o.products?.map(p => ({
+  //         name: p.name,
+  //         price: p.price,
+  //         quantity: p.quantity,
+  //         description: p.description,
+  //         address: p.address,
+  //         orderDate: new Date(p.orderDate),
+  //       })) ?? [],
+  //       isOpen: false 
+  //     })) as Order_List[];
 
-    return order.products.reduce((sum, product) => sum + (product.price * product.quantity), 0);
-  }
+  //   } catch (error) {
+  //   }
+  // }
+
+  // toggleOpen(order: any): void {
+  //   order.isOpen = !order.isOpen; 
+  // }
+
+  // getTotal(order: Order_List) {
+  //   if (!order.products || order.products.length === 0) {
+  //     return 0;
+  //   }
+
+  //   return order.products.reduce((sum, product) => sum + (product.price * product.quantity), 0);
+  // }
 }

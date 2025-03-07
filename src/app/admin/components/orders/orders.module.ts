@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
       {path: '', component:OrdersComponent}
     ])
   ],exports: [
-    
+    OrdersComponent
   ]
 })
 export class OrdersModule { }

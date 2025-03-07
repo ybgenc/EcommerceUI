@@ -20,7 +20,7 @@ export class AuthUserService {
     private toasterService: ToasterCustomService
   ) {}
 
-  async submitForm(
+  async Login(
     data: Login_User,
     callBackFuction: () => void
   ): Promise<any> {
@@ -126,6 +126,14 @@ export class AuthUserService {
       })
     }
     callBackFuction();
+  }
+
+  async sendPasswordResetMail(Email :string){
+   const reset : Observable<any> = this.httpClientService.Post({
+      controller:'auth',
+      action:'Password-reset',
+    },{Email : Email})
+    await firstValueFrom(reset)
   }
 
 

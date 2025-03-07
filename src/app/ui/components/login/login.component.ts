@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
   async submitForm(data: Login_User) {
     this.spinner.show();
-    await this.authUserService.submitForm(data, () => {
+    await this.authUserService.Login(data, () => {
       this.authService.checkIdentity();
       this.activateddRoute.queryParams.subscribe((params) => {
         const returnUrl: string = params['returnUrl'];

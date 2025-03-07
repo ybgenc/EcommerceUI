@@ -75,6 +75,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'login/ForgotPassword',
+    loadChildren: () =>
+      import(
+        './ui/components/login/forgot-password/forgot-password.module'
+      ).then((module) => module.ForgotPasswordModule),
+  },
+  {
+    path: 'update-password/:userId/:resetToken', 
+    loadChildren: () =>
+      import('./ui/components/login/reset-password/reset-password.module').then(
+        (module) => module.ResetPasswordModule
+      ),
+  },
+  {
     path: 'checkout/:id',
     loadChildren: () =>
       import('./ui/components/baskets/checkout/checkout.module').then(
@@ -86,12 +100,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./ui/components/order/order.module').then(
         (module) => module.OrderModule
-      )
-  }
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

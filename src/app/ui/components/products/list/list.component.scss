@@ -33,7 +33,7 @@ html, body {
   
 
 .btn-custom {
-    background-color: #800080;
+    background-color: rgba(128, 0, 128); 
     color: white;
     border-radius: 10px;
     transition: 0.3s;
@@ -52,23 +52,23 @@ html, body {
   }
 
   .pagination-custom .page-link {
-    color: #800080;
+    color: rgba(128, 0, 128); 
     border-radius: 12px;
-    border: 1px solid #800080;
+    border: 1px solid rgba(128, 0, 128); 
     padding: 10px 16px;
     font-weight: bold;
     transition: 0.3s;
   }
 
   .pagination-custom .page-link:hover {
-    background-color: #800080;
+    background-color: rgba(128, 0, 128); 
     color: white;
   }
 
   .pagination-custom .active {
-    background-color: #800080;
+    background-color: rgba(128, 0, 128); 
     color: white;
-    border: 1px solid #800080;
+    border: 1px solid rgba(128, 0, 128); 
   }
 
   .pagination-custom .page-item:first-child .page-link,
@@ -76,4 +76,3 @@ html, body {
     font-size: 14px;
   }
 
-  /* CARD HOVER EFFECT */

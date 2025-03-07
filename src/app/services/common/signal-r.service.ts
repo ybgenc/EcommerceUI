@@ -7,22 +7,16 @@ import {
 } from '@microsoft/signalr';
 import { error } from 'console';
 import { get } from 'https';
+import { hubUrls } from 'src/app/constant/hub-urls';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignalRService {
-  private _connection: HubConnection;
 
-  get connection(): HubConnection {
-    return this._connection;
-  }
 
   start(hubUrl: string) {
-    if (
-      !this.connection ||
-      this._connection?.state == HubConnectionState.Disconnected
-    ) {
+
       const builder: HubConnectionBuilder = new HubConnectionBuilder();
       const connection: HubConnection = builder
         .withUrl(hubUrl, {
@@ -39,28 +33,27 @@ export class SignalRService {
           setTimeout(() => this.start(hubUrl), 2000);
         });
 
-      this._connection = connection;
-    }
 
-    this._connection.onreconnected((connectionId) =>
-      console.log('reconnected')
-    );
-    this._connection.onreconnecting((error) => console.log('connecting'));
-    this._connection.onclose((error) => console.log('connection closed'));
+        connection.onreconnected((connectionId) => console.log('reconnected'));
+        connection.onreconnecting((error) => console.log('connecting'));
+        connection.onclose((error) => console.log('connection closed'));
+
+    return connection
   }
   invoke(
     procedureName: string,
     message: any,
+    hubUrl:string,
     successCallBack?: (value) => void,
     errorCallBack?: (error) => void
   ) {
-    this.connection
-      .invoke(procedureName, message)
-      .then(successCallBack)
-      .catch(errorCallBack);
+    this.start(hubUrl).invoke(procedureName, message)
+    .then(successCallBack)
+    .catch(errorCallBack);
+
   }
 
-  on(procedureName: string, callBack: (...message: any) => void) {
-    this.connection.on(procedureName, callBack);
+  on(hubUrl:string, procedureName: string, callBack: (...message: any) => void) {
+    this.start(hubUrl).on(procedureName, callBack);
   }
 }
