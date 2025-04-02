@@ -15,6 +15,7 @@ import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 import { ProductImageUploadDialogComponent } from './product-image-upload-dialog/product-image-upload-dialog.component';
 import { FileUploadModule } from '../services/common/file-upload/file-upload.module';
 import {MatCardModule} from '@angular/material/card';
+import { AuthorizeMenuDialogComponent } from './authorize-menu-dialog/authorize-menu-dialog.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
     UpdateDialogComponent,
     CreateDialogComponent,
     ProductImageUploadDialogComponent,
+    AuthorizeMenuDialogComponent,
   ],
   imports: [
     CommonModule,

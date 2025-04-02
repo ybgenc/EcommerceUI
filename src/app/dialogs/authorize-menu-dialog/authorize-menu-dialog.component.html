@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Assign</h2>
+<mat-dialog-content>
+    <p>Are you sure you want to assign a role to the '{{data.name}}' action?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="cancel-button" (click)="close()">No Thanks</button>
+  <button mat-button class="assign-button" [mat-dialog-close]="data" cdkFocusInitial>
+    <mat-icon>how_to_reg</mat-icon>
+</button>
+</mat-dialog-actions>
+

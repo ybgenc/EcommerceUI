@@ -1,0 +1,22 @@
+<div class="matTreeContainer">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- Leaf Nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled class="tree-node-button">
+          <mat-icon class="tree-icon">check_circle</mat-icon>
+        </button>
+        <span class="tree-node-text">{{ node.name }}</span>
+        <button mat-button (click)="assignRole(node.code,node.name)">Assign Role</button>
+
+      </mat-tree-node>
+  
+      <!-- Expandable Nodes -->
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
+        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" class="tree-node-button">
+          <mat-icon class="tree-icon">{{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}</mat-icon>
+        </button>
+        <span class="tree-node-text">{{ node.name }}</span>
+      </mat-tree-node>
+    </mat-tree>
+  </div>
+  

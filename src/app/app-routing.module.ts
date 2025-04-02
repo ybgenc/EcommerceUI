@@ -35,6 +35,14 @@ const routes: Routes = [
           ),
         canActivate: [AuthGuard],
       },
+      {
+        path: `authorize-menu`,
+        loadChildren: () =>
+          import(
+            './admin/components/authorize-menu/authorize-menu.module'
+          ).then((module) => module.AuthorizeMenuModule),
+        canActivate: [AuthGuard],
+      },
     ],
     canActivate: [AuthGuard],
   },
@@ -82,7 +90,7 @@ const routes: Routes = [
       ).then((module) => module.ForgotPasswordModule),
   },
   {
-    path: 'update-password/:userId/:resetToken', 
+    path: 'update-password/:userId/:resetToken',
     loadChildren: () =>
       import('./ui/components/login/reset-password/reset-password.module').then(
         (module) => module.ResetPasswordModule

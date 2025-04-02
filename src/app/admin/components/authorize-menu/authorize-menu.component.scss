@@ -1,0 +1,61 @@
+::ng-deep {
+  .matTreeContainer {
+    background-color: #fef9c7 !important;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .mat-tree {
+    background-color: #fef9c7 !important;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .mat-drawer-container {
+    background-color: #fef9c7 !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+  }
+
+  .mat-drawer-content {
+    background-color: transparent !important;
+  }
+
+  .mat-tree-node {
+    background-color: transparent !important;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .mat-tree-node:hover {
+    background-color: #e6e1b3;
+  }
+
+  .tree-icon {
+    color: #800080;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+
+  .tree-node-text {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .tree-node-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-right: 10px;
+  }
+
+  .mat-tree-node.mat-tree-node-toggle {
+    cursor: pointer;
+  }
+}

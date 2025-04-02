@@ -9,6 +9,7 @@ import { OrdersModule } from './orders/orders.module';
 import { CustomersModule } from './customers/customers.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { NgxSpinner, NgxSpinnerModule } from 'ngx-spinner';
+import { AuthorizeMenuModule } from './authorize-menu/authorize-menu.module';
 
 
 
@@ -21,6 +22,7 @@ import { NgxSpinner, NgxSpinnerModule } from 'ngx-spinner';
     CustomersModule,
     DashboardModule,
     NgxSpinnerModule,
+    AuthorizeMenuModule
 
   ]
 })
