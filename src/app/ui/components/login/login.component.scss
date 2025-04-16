@@ -1,84 +1,124 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: transparent; 
-}
-
-
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fef9c7;
-}
-
-input {
-    background-color: transparent !important;  
-    border: 1px solid #ccc;  
-    color: #333; 
-    padding: 8px;  
-    font-size: 16px; 
-}
-
-/* Odaklanma durumu */
-input:focus {
-    background-color: transparent !important;  
-    border-color: rgba(128, 0, 128);   
-    outline: none;  
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #feefd9;
 }
 
 .login-card {
-    width: 100%;
-    max-width: 600px;
-    max-height: 90vh;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: rgba(232, 229, 199, 0.5) !important; /* %50 transparan */
-    overflow-y: auto;
+  background-color: #feefd9;
+  margin-top: -4rem;
+  padding: 50px 40px;
+  border-radius: 32px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.02),
+              -8px -8px 20px rgba(0, 0, 255, 0.4),
+              inset 5px 5px 10px rgba(0, 0, 0, 0.02),
+              inset -5px -5px 10px rgba(0, 0, 255, 0.3);
+  width: 100%;
+  max-width: 600px;
 }
 
-
-
-/* Button styling */
-.btn-primary {
-    background-color: rgba(128, 0, 128); 
+.login-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #160975;
+  margin-bottom: 24px;
 }
 
-.btn-primary:hover {
-    background-color: rgba(128, 0, 128); 
+.form-group {
+  margin-bottom: 20px;
 }
-.login-buttons {
-    margin-top: 10px;
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .facebook-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #1877F2;
-    color: white;
-    border: none;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #160975;
+  margin-bottom: 6px;
+  display: block;
+}
 
-  .facebook-button:hover {
-    background-color: #165DB6;
-  }
+.login-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #feefd9;
+  border-radius: 16px;
+  background-color: #feefd9;
+  box-shadow: inset 3px 3px 6px #e5e5e5,
+              inset -3px -3px 6px #feefd9;
+  outline: none;
+  transition: border 0.2s;
+}
 
-  svg {
-    fill: white;
-  }
+.login-input:focus {
+  border-color: #ff8fab;
+}
 
+.input-invalid {
+  border-color: #dc3545;
+}
 
+.input-error {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
 
-  
+.login-btn {
+  background-color: #c0bbe6;
+  color: #166534;
+  font-weight: bold;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.05),
+              -4px -4px 10px rgba(255, 255, 255, 0.8);
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #a3dec9;
+}
+
+.forgot-password-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #a14c00;
+  text-decoration: none;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.login-social-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.social-button {
+  background-color: #eceff1;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
+              -4px -4px 10px rgba(255, 255, 255, 0.8);
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.social-button.facebook {
+  color: #3b5998;
+}
+
+.social-button:hover {
+  background-color: #e0e0e0;
+}

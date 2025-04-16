@@ -7,8 +7,8 @@
 }
 
 .admin-left-drawer {
-  background-color: #e8e2a1; 
-  color: white;
+  background-color: #f4f4f7;
+  color: #6c5ce7;
   width: 250px;
   position: fixed;
   top: 0;
@@ -16,11 +16,9 @@
   bottom: 0;
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
+  border-radius: 0 16px 16px 0;
+  box-shadow: 8px 0 16px #dcdce1, -8px 0 16px #ffffff;
 }
-
-
-
-
 
 .admin-left-drawer.open {
   transform: translateX(250px); 
@@ -32,6 +30,7 @@
 
 .mat-drawer-content {
   flex-grow: 1;
+  background-color: #f4f4f7;
   transition: margin-left 0.3s ease-in-out;
 }
 
@@ -39,26 +38,27 @@
   margin-left: 0;
   width: 100%;
 }
-/* Sidebar Links */
+
 .admin-left-drawer .mat-drawer-content a {
-  color: #ffffff;
+  color: #6c5ce7;
   font-weight: 500;
   font-size: 1rem;
   display: block;
   padding: 10px;
   text-decoration: none;
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .admin-left-drawer .mat-drawer-content a:hover {
-  background-color: #32CD32;
-  border-radius: 5px;
+  background-color: #f4f4f7;
+  color: #4a3bd6;
 }
 
 .app-sidebar {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #6c5ce7;
 }
 
 .app-sidebar ul {
@@ -71,38 +71,34 @@
 }
 
 .app-sidebar ul li a {
-  color: #ffffff;
+  color: #6c5ce7;
   font-size: 1rem;
   padding: 10px;
   display: block;
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .app-sidebar ul li a:hover {
-  background-color: #32CD32;
-  border-radius: 5px;
+  background-color: #e0e0f8;
+  color: #4a3bd6;
 }
 
 .menu-toggle {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  background-color: rgba(128, 0, 128); 
+  background-color: #201862;
   color: white;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 10px 14px;
+  border-radius: 12px;
   cursor: pointer;
   z-index: 1100;
-  display: block; /* Visible on mobile */
-  transition: background-color 0.3s ease;
+  display: block;
 }
 
 .menu-toggle:hover {
-  background-color: #dbbe39;
-}
-
-.mat-drawer-content {
-  transition: margin-left 0.3s ease-in-out;
+  background-color: #4a3bd6;
 }
 
 .admin-left-drawer.open ~ .mat-drawer-content {

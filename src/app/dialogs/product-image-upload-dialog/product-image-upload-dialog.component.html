@@ -1,22 +1,29 @@
 <mat-dialog-content class="dialog-content">
-  <app-file-upload [options]="options" class="file-upload"></app-file-upload>
+  <h3 class="dialog-title">Upload Images</h3>
 
-  <div class="uploaded-images">
-    <h3 class="uploaded-title">Uploaded Images</h3>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
-      <div class="col" *ngFor="let image of images">
-        <div class="product-image-card" >
-          <input type="radio"  name="img" (click)="selectShowcaseImage(image.id)"  (checked)="image.showCase"> Showcase
-          <img mat-card-image [src]="image.path" alt="Uploaded Image" />
-          <div class="mat-card-actions">
-            <button mat-icon-button class="delete-button" (click)="deleteProductImage(image.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
+  <div class="dialog-body">
+    <div class="file-upload-section">
+      <app-file-upload [options]="options" class="file-upload"></app-file-upload>
+    </div>
+
+    <div class="uploaded-images-section">
+      <h4 class="uploaded-title">Uploaded Images</h4>
+      <div class="image-grid">
+        <div class="image-card" *ngFor="let image of images">
+          <div class="image-card-content">
+            <img [src]="image.path" alt="Uploaded Image" class="image-card-img" />
+            <div class="image-card-actions">
+              <input type="radio" name="img" (click)="selectShowcaseImage(image.id)" [checked]="image.showCase" class="showcase-toggle">
+              <button class="delete-button" (click)="deleteProductImage(image.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close class="cancel-button">Cancel</button>
   </mat-dialog-actions>

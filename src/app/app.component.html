@@ -22,15 +22,16 @@
 
     >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="products">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="order">Orders</a>
-        </li>
+        <div class="nav item navitemlink">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="products">Products</a>
+          </li>
+
+        </div>
+
 
         <!-- <li class="nav-item dropdown">
           <a
@@ -58,22 +59,19 @@
         <li class="nav-item">
 
           <form class="d-flex">
-          <!-- <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            /> -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basketModal" (click)="loadComponent()" >
-              Basket
-            </button>
-            
-            <a class="btn btn-outline-light me-2" routerLink="admin" *ngIf="authService.isAutheticated">Admin</a>
-            <a class="btn btn-outline-light me-2" routerLink="register" *ngIf="!authService.isAutheticated">SignUp</a>
-            <a class="btn btn-outline-light me-2" routerLink="login" *ngIf="!authService.isAutheticated">Login</a>
-            <a class="btn btn-outline-light me-2" *ngIf="authService.isAutheticated" (click) ="logOut()">LogOut</a>
+            <div class="d-flex gap-2"> <!-- Add a gap between the buttons -->
+              <button type="button" class="btn btn-outline-basket" data-bs-toggle="modal" data-bs-target="#basketModal" (click)="loadComponent()">
+                <i class="bi bi-cart" style="margin-right: 8px;"></i>
+              </button>
+              
+          
+              <a class="btn btn-outline-light" routerLink="admin" *ngIf="authService.isAutheticated">Admin</a>
+              <a class="btn btn-outline-light" routerLink="register" *ngIf="!authService.isAutheticated">SignUp</a>
+              <a class="btn btn-outline-light" routerLink="login" *ngIf="!authService.isAutheticated">Login</a>
+              <a class="btn btn-outline-light" *ngIf="authService.isAutheticated" (click)="logOut()">LogOut</a>
+            </div>
           </form>
+          
         </li>
       </ul>
     </div>

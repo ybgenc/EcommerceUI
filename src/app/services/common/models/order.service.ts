@@ -38,4 +38,5 @@ export class OrderService {
 
    return await firstValueFrom(orderDetail)
   }
+
 }

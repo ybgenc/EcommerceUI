@@ -30,7 +30,8 @@
     width: 60%;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(45deg, #1E90FF, #32CD32);
+    background: linear-gradient(45deg, #6c5ce7, #98FB98);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.6);
     color: white;
     border: none;
     cursor: pointer;
@@ -42,7 +43,8 @@
 }
 
 .file-upload-box .custom-content button:hover {
-    background: linear-gradient(45deg, #32CD32, #1E90FF);
+    background: linear-gradient(45deg, #98FB98, #6c5ce7);
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.8);
 }
 
 .file-upload-box:focus {

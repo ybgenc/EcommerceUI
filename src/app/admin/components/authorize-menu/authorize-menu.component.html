@@ -3,7 +3,7 @@
       <!-- Leaf Nodes -->
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
         <button mat-icon-button disabled class="tree-node-button">
-          <mat-icon class="tree-icon">check_circle</mat-icon>
+          <mat-icon class="tree-icon">check</mat-icon>
         </button>
         <span class="tree-node-text">{{ node.name }}</span>
         <button mat-button (click)="assignRole(node.code,node.name)">Assign Role</button>

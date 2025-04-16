@@ -1,61 +1,78 @@
-::ng-deep {
-  .matTreeContainer {
-    background-color: #fef9c7 !important;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+.matTreeContainer {
+  background-color: #f4f4f7;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin: 3rem auto;
+  max-width: 85%;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.2),
+    0 40px 90px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.25),
+      0 60px 120px rgba(0, 0, 0, 0.15);
+  }
+}
+
+mat-tree-node {
+  background: #feefd9;
+  border-radius: 20px;
+  margin: 1rem 0;
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.tree-node-button {
+  background-color: #160975;
+  border-radius: 50%;
+  margin-right: 1rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #160975;
   }
 
-  .mat-tree {
-    background-color: #fef9c7 !important;
-    padding: 10px;
-    margin: 0;
+  mat-icon {
+    font-size: 22px;
+    color: #fff;
+    background-color: #160975;
   }
+}
 
-  .mat-drawer-container {
-    background-color: #fef9c7 !important;
-    color: rgba(0, 0, 0, 0.87) !important;
-  }
+.tree-node-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  flex-grow: 1;
+}
 
-  .mat-drawer-content {
-    background-color: transparent !important;
-  }
+button[mat-button] {
+  background-color: #160975;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
-  .mat-tree-node {
-    background-color: transparent !important;
-    border-radius: 4px;
-    margin-bottom: 5px;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #160975;
+    transform: scale(1.1);
   }
+}
 
-  .mat-tree-node:hover {
-    background-color: #e6e1b3;
-  }
-
-  .tree-icon {
-    color: #800080;
-    font-size: 18px;
-    margin-right: 10px;
-  }
-
-  .tree-node-text {
-    font-size: 16px;
-    color: #333;
-    font-weight: 500;
-  }
-
-  .tree-node-button {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin-right: 10px;
-  }
-
-  .mat-tree-node.mat-tree-node-toggle {
-    cursor: pointer;
-  }
+mat-tree {
+  border-radius: 20px;
 }

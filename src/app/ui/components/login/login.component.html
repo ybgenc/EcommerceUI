@@ -1,45 +1,47 @@
-<div class="login-container d-flex justify-content-center align-items-center vh-100">
-    <div class="login-card col-md-6 col-lg-4 p-4 shadow-sm bg-white rounded">
-        <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
-            <!-- UsernameOrEmail -->
-            <div class="mb-3">
-                <label for="UsernameOrEmail" class="form-label">Username or Email</label>
-                <input type="text" class="form-control" id="UsernameOrEmail" formControlName="UsernameOrEmail" [class.is-invalid]="
-            loginForm.controls['UsernameOrEmail'].invalid &&
-            loginForm.controls['UsernameOrEmail'].touched
-          " placeholder="Enter your user name" required />
-                <div class="invalid-feedback">
-                    <small *ngIf="loginForm.controls['UsernameOrEmail'].hasError('required')">Username or Email is required.</small>
-                </div>
-            </div>
-
-            <!-- Password -->
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" formControlName="password"
-                    [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-                    placeholder="Enter your password" required />
-                <div class="invalid-feedback">
-                    <small *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</small>
-                </div>
-            </div>
-
-            <!-- Submit -->
-            <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">
-                Login
-            </button>
-            <a routerLink="/login/ForgotPassword" class="btn btn-link text-decoration-none">
-                Forgot Password?
-              </a>
-                          <div class="login-buttons">
-                <asl-google-signin-button></asl-google-signin-button>
-                <button class="facebook-button" (click)="facebookLogin()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987H7.898V12h2.54V9.797c0-2.507 1.493-3.89 3.774-3.89 1.095 0 2.24.195 2.24.195v2.464h-1.264c-1.244 0-1.633.772-1.633 1.563V12h2.775l-.443 2.892h-2.332v6.987C18.343 21.128 22 16.991 22 12z"/>
-                  </svg>
-                </button>
-              </div>
-
-        </form>
+<div class="login-wrapper">
+    <div class="login-card">
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
+        <h2 class="login-title">Welcome Back</h2>
+  
+        <!-- UsernameOrEmail -->
+        <div class="form-group">
+          <label for="UsernameOrEmail">Username or Email</label>
+          <input type="text" id="UsernameOrEmail" class="login-input" formControlName="UsernameOrEmail"
+            [class.input-invalid]="loginForm.controls['UsernameOrEmail'].invalid && loginForm.controls['UsernameOrEmail'].touched"
+            placeholder="Enter your username or email" />
+          <div class="input-error" *ngIf="loginForm.controls['UsernameOrEmail'].hasError('required')">
+            Username or Email is required.
+          </div>
+        </div>
+  
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="login-input" formControlName="password"
+            [class.input-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+            placeholder="Enter your password" />
+          <div class="input-error" *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required.
+          </div>
+        </div>
+  
+        <!-- Submit -->
+        <button class="login-btn" type="submit" [disabled]="!loginForm.valid">
+          Login
+        </button>
+  
+        <a routerLink="/login/ForgotPassword" class="forgot-password-link">Forgot Password?</a>
+  
+        <div class="login-social-buttons">
+          <asl-google-signin-button></asl-google-signin-button>
+          <button class="social-button facebook" (click)="facebookLogin()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987H7.898V12h2.54V9.797c0-2.507 1.493-3.89 3.774-3.89 1.095 0 2.24.195 2.24.195v2.464h-1.264c-1.244 0-1.633.772-1.633 1.563V12h2.775l-.443 2.892h-2.332v6.987C18.343 21.128 22 16.991 22 12z" />
+            </svg>
+          </button>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
+  

@@ -56,7 +56,11 @@ export class OrdersComponent implements OnInit {
         price: od.price,
         quantity: od.quantity,
         description: od.description,
-        address: od.address
+        address: od.address,
+        isSended : od.isSended,
+        orderNumber : od.orderNumber,
+        totalPrice:od.totalPrice
+
       }
       return detail
     })

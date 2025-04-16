@@ -1,71 +1,50 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: transparent; 
-}
+.custom-card {
+    background-color: #feefd9;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #160975 ;
+    transition: box-shadow 0.3s ease;
+    margin-top: -3rem;
+  }
+  .register-container{
+    background-color: #feefd9;
 
-
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #fef9c7;
-}
-
-input {
-    background-color: transparent !important;  
-    border: 1px solid #ccc;  
-    color: #333; 
-    padding: 8px;  
-    font-size: 16px; 
-}
-
-/* Odaklanma durumu */
-input:focus {
-    background-color: transparent !important;  
-    border-color: rgba(128, 0, 128);  
-    outline: none;  
-}
-/* Custom Checkbox Styling */
-.form-check-input:checked {
-    background-color: rgba(128, 0, 128)  !important;
-    border-color: rgba(128, 0, 128) !important;
-}
-
-.form-check-input:focus {
-    border-color:rgba(128, 0, 128) !important; 
-    outline: none; /* Remove outline */
-}
-
-.form-check-input {
-    border: 1px solid #ccc; /* Default border color */
-}
-
-/* If you want to change the checkmark icon color */
-.form-check-input:checked::after {
-    background-color: rgba(128, 0, 128) !important;
-}
-
-.register-card {
+  }
+  .form-control {
+    border-radius: 16px;
+    background-color: #feefd9;
+    box-shadow: inset 3px 3px 6px #e5e5e5, inset -3px -3px 6px #feefd9;
+    padding: 12px 16px;
+    border: 1px solid #feefd9;
+    font-size: 14px;
+    transition: border 0.2s;
+  }
+  
+  .form-control:focus {
+    border-color: #ff8fab;
+  }
+  
+  .invalid-feedback {
+    font-size: 12px;
+    color: #dc3545;
+  }
+  
+  .custom-btn {
+    background-color: #c0bbe6;
+    color: #166534;
+    font-weight: bold;
+    padding: 12px;
     width: 100%;
-    max-width: 600px;
-    max-height: 90vh;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: rgba(232, 229, 199, 0.5) !important; /* %50 transparan */
-    overflow-y: auto;
-}
-
-
-
-/* Button styling */
-.btn-primary {
-    background-color: rgba(128, 0, 128);
-}
-
-.btn-primary:hover {
-    background-color: rgba(128, 0, 128); ;
-}
+    border: none;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.05), -4px -4px 10px rgba(255, 255, 255, 0.8);
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-btn:hover {
+    background-color: #a3dec9;
+  }
+  .form-label {
+    color: #160975;
+    font-weight: 500;
+  }

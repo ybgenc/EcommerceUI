@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  googleClientId: '902986185803-4dl068flq4g27bpj299khhlq7es3g988.apps.googleusercontent.com'
+  production: true,
+  googleClientId: '902986185803-4dl068flq4g27bpj299khhlq7es3g988.apps.googleusercontent.com',
+  baseUrl: "https://ecommerceapiapi20250415132220.azurewebsites.net/api"
 
 };
 

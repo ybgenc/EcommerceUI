@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.product-accordion-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff7ea;
+  border-radius: 20px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), 
+              -8px -8px 16px rgba(255, 255, 255, 0.7), 
+              inset 5px 5px 10px rgba(0, 0, 0, 0.1), 
+              inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+mat-accordion {
+  width: 100%;
+}
+
+mat-expansion-panel {
+  background-color: #feefd9;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1), 
+              -8px -8px 20px rgba(255, 255, 255, 0.6), 
+              inset 5px 5px 15px rgba(0, 0, 0, 0.1), 
+              inset -5px -5px 15px rgba(255, 255, 255, 0.8);
+  transition: transform 0.2s ease;
+}
+
+mat-expansion-panel:hover {
+  transform: scale(1.02);
+}
+
+mat-expansion-panel.mat-expanded {
+  box-shadow: 0 0 10px #160975cc, 0 0 20px #160975aa, 0 0 30px #16097588;
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+mat-expansion-panel-header {
+  background-color: #feefd9;
+  color: #160975;
+  padding: 14px 20px;
+  border-radius: 25px !important;
+  font-weight: bold;
+}
+
+mat-panel-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #160975;
+}
+
+mat-panel-description {
+  font-size: 14px;
+  color: #160975;
+}
+
+.example-element-detail {
+  background-color: #feefd9;
+  padding: 20px 24px;
+  border-radius: 25px;
+  box-shadow: inset 6px 6px 12px #feefd9,
+              inset -6px -6px 12px #feefd9;
+  color: #2b1c9c;
+  font-weight: 500;
+}
+
+.detail-wrapper {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.detail-wrapper strong {
+  font-weight: 700;
+  color: #160975;
+}
+
+mat-paginator {
+  margin-top: 24px;
+  padding: 10px 0;
+  background-color: #f4f4f7;
+  border-radius: 12px;
+  box-shadow: inset 6px 6px 10px #dcdce1,
+              inset -6px -6px 10px #ffffff;
+  color: #160975;
+}
+
+mat-paginator .mat-paginator-range-label {
+  color: #160975;
+}
+
+mat-paginator button {
+  background-color: #f4f4f7;
+  color: #160975;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px #dcdce1,
+              -4px -4px 8px #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+mat-paginator button:hover {
+  background-color: #eaeaf3;
+}
+
+.sended-header {
+  background-color: #d7f9dc !important;
+  color: #166534 !important;
+  border-radius: 25px !important;
+  transition: background-color 0.3s ease;
+}
+
+.pending-header {
+  background-color: #fff3e0 !important;
+  color: #a14c00 !important;
+  border-radius: 25px !important;
+  transition: background-color 0.3s ease;
+}
+
+.order-title-text {
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.order-status-icon {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.sent-text {
+  color: #166534;
+  font-weight: bold;
+}
+
+.pending-text {
+  color: #a14c00;
+  font-weight: bold;
+}

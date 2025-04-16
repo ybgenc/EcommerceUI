@@ -4,6 +4,7 @@ import { LayoutComponent } from './admin/layout/layout.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { HomeComponent } from './ui/components/home/home.component';
 import { AuthGuard } from './guards/common/auth.guard';
+import { ProductsComponent } from './ui/components/products/products.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,7 @@ const routes: Routes = [
     ],
     canActivate: [AuthGuard],
   },
-  { path: '', component: HomeComponent },
+  { path: '', component: ProductsComponent },
   {
     path: 'basket',
     loadChildren: () =>

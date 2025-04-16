@@ -5,5 +5,8 @@ export class Order_Detail {
     quantity: number;
     description: string;
     address: string;
+    isSended : boolean;
+    orderNumber : string
+    totalPrice : number
   }
   

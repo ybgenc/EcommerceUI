@@ -1,86 +1,119 @@
-// Sepet Modalı
-.modal {
-    background-color: #fff8e1(0, 0, 0, 0.5); /* Greyish overlay */
-  }
+.basket-modal {
+  background: #feefd9;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+}
 
-.modal-content {
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff8e1; /* Light grey background */
+.modal-header {
+  border-bottom: 2px solid #f5f5f5;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
 
-  }
-  
-  // Butonlar
-  .open-basket {
-    margin-bottom: 15px;
-  }
-  
-  .basket-table {
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #160975; /* Başlık rengi */
+}
+
+.btn-close {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: #160975; /* X butonu rengi */
+}
+
+.btn-close:hover {
+  color: #ff8fab; /* Renk değişimi */
+}
+
+.modal-body {
+  .table {
     width: 100%;
-    text-align: center;
+    border-collapse: collapse;
+  }
+}
 
-  
-    th {
-      background-color: rgba(128, 0, 128); 
-      color: white;
-      padding: 12px;
-      text-transform: uppercase;
-    }
-  
-    td {
-      padding: 10px;
-      background-color: #fff8e1; 
+.basket-table {
+  width: 100%;
+  background-color: #fff3e5; /* Pastel açık renk */
+}
 
-    }
-  
-    .quantity-input {
-      width: 60px;
-      height: 30px;
-      background-color: #fff8e1; 
-      border: 1px solid rgba(128, 0, 128); 
-      border-radius: 5px;
-      text-align: center;
+.basket-table th, .basket-table td {
+  padding: 12px 15px;
+  text-align: center;
+}
 
-    }
-  
-    button {
-      margin-top: -5px;
-    }
-  }
-  
-  // Responsive Tasarım
-  @media (max-width: 768px) {
-    .basket-table {
-      font-size: 14px;
-  
-      th, td {
-        padding: 8px;
-      }
-    }
-  
-    .modal-dialog {
-      max-width: 90%;
-    }
-    
-  }
-  .modal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px; /* Adjust padding as needed */
-  }
-  
-  .total-price {
-    margin: 0;
-    font-size: 1.2rem; /* Make the total price larger if needed */
-    text-align: left;
-  }
-  
+.basket-table th {
+  background-color: #fff3e5; /* Başlık rengi pastel açık */
+  color: #160975; /* Başlık rengi mor */
+}
 
-  
-  button:first-of-type {
-    margin-right: 10px; /* For the 'Close' button, add right margin */
-  }
-  
-  
-  
+.basket-table tr:nth-child(even) {
+  background-color: #feefd9; /* Eşleşmeyen satırlar için daha açık pastel ton */
+}
+
+.basket-table td {
+  font-size: 1rem;
+  background-color: #feefd9; /* Her hücreye açık arka plan */
+}
+
+.quantity-input {
+  width: 50px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: #160975;
+}
+
+.btn-danger {
+  background-color: #ff4d6a;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #160975;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 2px solid #f5f5f5;
+}
+
+.total-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #160975;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-warning:hover {
+  background-color: #ff9a2a;
+}
+
+.btn-success:hover {
+  background-color: #388e3c;
+}

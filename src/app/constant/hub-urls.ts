@@ -1,4 +1,4 @@
 export enum hubUrls {
-    ProductHub = "https://localhost:7148/products-hub",
-    OrderHub = "https://localhost:7148/orders-hub"
+    ProductHub = "https://ecommerceapiapi20250415132220.azurewebsites.net/products-hub",
+    OrderHub = "https://ecommerceapiapi20250415132220.azurewebsites.net/orders-hub"
 }

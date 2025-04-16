@@ -20,12 +20,14 @@ import {
 import { SocialLoginModule } from '@abacritt/angularx-social-login'; 
 import { HtttpErrorHandlerInterceptorService } from './services/common/htttp-error-handler-interceptor.service';
 import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DynamicLoadComponentDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DirectivesModule,
     ReactiveFormsModule,
     AdminModule,
     UiModule,
@@ -36,13 +38,13 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('accessToken'),
-        allowedDomains: ['localhost:7148'],
+        allowedDomains: ['ecommerceapiapi20250415132220.azurewebsites.net'],
       },
     }),
     SocialLoginModule,
   ],
   providers: [
-    { provide: 'baseUrl', useValue: 'https://localhost:7148/api', multi: true },
+    { provide: 'baseUrl', useValue: 'https://ecommerceapiapi20250415132220.azurewebsites.net/api', multi: true },
     DatePipe,
     {
       provide: 'SocialAuthServiceConfig',

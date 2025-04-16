@@ -1,51 +1,54 @@
-<div class="container mt-4 col-lg-12">
+<div class="container-fluid p-0">
   <div class="row">
     <!-- Payment Form -->
-    <div class="col-md-9">
-      <div class="payment-form card p-4">
-        <h3 class="mb-3">Delivery Information</h3>
+    <div class="col-lg-9 col-md-8">
+      <div class="payment-form card p-5 shadow-sm rounded">
+        <h3 class="payment-form__title mb-4">Delivery Information</h3>
+
+        <!-- Address and Description -->
         <div class="mb-3">
           <label for="address" class="form-label">Address</label>
-          <textarea type="text" class="form-control"  placeholder="Enter your address"  #txtAddress></textarea>
+          <textarea class="form-control payment-form__input" id="address" placeholder="Enter your address" #txtAddress rows="3"></textarea>
         </div>
         <div class="mb-3">
-          <label for="Description" class="form-label">Description</label>
-          <textarea type="text" class="form-control"  placeholder="Enter your description" #txtDescription></textarea>
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control payment-form__input" id="description" placeholder="Enter your description" #txtDescription rows="3"></textarea>
         </div>
 
-        <h3 class="mt-4">Card Information</h3>
+        <!-- Card Information -->
+        <h3 class="payment-form__title mt-4">Card Information</h3>
         <div class="mb-3">
           <label for="cardNumber" class="form-label">Card Number</label>
-          <input type="number" class="form-control" id="cardNumber" placeholder="0000 0000 0000 0000">
+          <input type="text" class="form-control payment-form__input" id="cardNumber" placeholder="0000 0000 0000 0000">
         </div>
         <div class="row">
           <div class="col-md-6">
             <label for="expiry" class="form-label">Expiration Date</label>
-            <input type="number" class="form-control" id="expiry" placeholder="MM/YY">
+            <input type="text" class="form-control payment-form__input" id="expiry" placeholder="MM/YY">
           </div>
           <div class="col-md-6">
             <label for="cvv" class="form-label">CVC</label>
-            <input type="number" class="form-control" id="cvv" placeholder="CVC">
+            <input type="text" class="form-control payment-form__input" id="cvv" placeholder="CVC">
           </div>
         </div>
 
-        <h3 class="mt-4">Basket</h3>
-        <div *ngFor="let item of basketItem" class="d-flex justify-content-between align-items-center border-bottom py-2">
+        <!-- Basket Information -->
+        <h3 class="payment-form__title mt-4">Basket</h3>
+        <div *ngFor="let item of basketItem" class="basket-item d-flex justify-content-between align-items-center border-bottom py-2">
           <span class="flex-grow-1">{{ item.name }}</span>
           <p class="fw-bold w-25 text-center">{{ item.quantity }}</p>
           <p class="fw-bold w-25 text-center">{{ item.price | currency: 'USD' }}</p>
           <p class="fw-bold w-25 text-center">{{ item.quantity * item.price | currency: 'USD' }}</p>
         </div>
-        
       </div>
     </div>
 
     <!-- Payment Summary -->
-    <div class="col-md-3">
-      <div class="payment-summary card p-4">
-        <h3 class="fw-bold text-dark">Amount to be Paid</h3>
-        <h3 class="text-primary" txtTotalPrice>{{ getTotal() | currency:'USD' }}</h3>
-        <button class="btn w-100 mt-3" (click)="completePayment(txtAddress.value ,txtDescription.value, getTotal())">Complete Order</button>
+    <div class="col-lg-3 col-md-4">
+      <div class="payment-summary card p-5 shadow-sm rounded">
+        <h3 class="payment-summary__title fw-bold text-dark">Amount to be Paid</h3>
+        <h3 class="payment-summary__price text-primary" txtTotalPrice>{{ getTotal() | currency:'USD' }}</h3>
+        <button class="payment-summary__btn btn btn-warning w-100 mt-3" (click)="completePayment(txtAddress.value ,txtDescription.value, getTotal())">Complete Order</button>
       </div>
     </div>
   </div>

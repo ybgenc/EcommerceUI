@@ -1,93 +1,83 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: transparent; 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background-color: #fff7ea;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
 }
 
 th, td {
-  padding: 12px 20px; 
-  text-align: left; 
+  padding: 12px 20px;
+  text-align: left;
 }
 
 th {
-  background-color: rgba(128, 0, 128); 
-  color: white;
+  background-color: #feefd9;
+  color: #160975;
   font-weight: bold;
   border-bottom: 2px solid #ddd;
 }
 
 td {
-  color: #000; 
-  background-color: transparent; 
+  color: #333;
+  background-color: transparent;
   border-bottom: 1px solid #ddd;
   transition: background-color 0.3s ease;
 }
+
 td.description-cell {
-  max-width: 150px;  
-  white-space: nowrap;  
-  overflow: hidden;  
-  text-overflow: ellipsis; 
-  cursor: pointer;  
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
 }
 
 td.description-cell.expanded {
-  white-space: normal;  
-  overflow: auto;  
-  max-width: 50%;  
-  word-wrap: break-word;  
-  background-color: rgba(0, 0, 0, 0.05);  
+  white-space: normal;
+  overflow: auto;
+  max-width: 50%;
+  word-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.05);
   padding: 8px;
 }
 
 @media (max-width: 768px) {
   table {
     display: block;
-    overflow-x: auto;  
+    overflow-x: auto;
     white-space: nowrap;
   }
-
-
 }
 
-
-  th, td {
-    min-width: 80px; 
-  }
-
-
+th, td {
+  min-width: 80px;
+}
 
 tr:nth-child(even) {
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 tr:hover {
-  background-color: rgba(241, 241, 241, 0.3); 
-  transform: scale(1.01); 
+  background-color: rgba(241, 241, 241, 0.3);
+  transform: scale(1.02);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 mat-paginator {
   margin-top: 16px;
+  background-color: #fff7ea;
 }
 
 mat-paginator .mat-paginator-range-label,
 mat-paginator button {
-  color: #3f51b5;
+  color: #160975;
 }
 
 mat-icon {
-  color: rgba(128, 0, 128);
+  color: #160975;
   font-size: 25px;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 }
-
-
-
-
-
-
-

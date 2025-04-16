@@ -1,1 +1,64 @@
-<p>customers works!</p>
+<div class="product-accordion-container">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let customer of pagedData">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          👤 {{ customer.Name }}
+        </mat-panel-title>
+        <mat-panel-description>
+          ID: {{ customer.Id }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-accordion>
+        <mat-expansion-panel 
+        *ngFor="let order of customer.Orders"
+        (opened)="getOrderDetail(order.id)">
+    
+        <mat-expansion-panel-header 
+          [ngClass]="orderDetailMap[order.id]?.[0]?.isSended ? 'sended-header' : 'pending-header'">
+          
+          <mat-panel-title>
+            <span class="order-status-icon">
+              <ng-container *ngIf="orderDetailMap[order.id]?.[0]?.isSended; else notSent">
+                ✅
+              </ng-container>
+              <ng-template #notSent>📦</ng-template>
+            </span>
+            <span class="order-title-text">
+              Order No: {{ orderDetailMap[order.id]?.[0]?.orderNumber }} |
+              Total: {{ orderDetailMap[order.id]?.[0]?.totalPrice }} ₺ |
+              Status: 
+              <span [ngClass]="orderDetailMap[order.id]?.[0]?.isSended ? 'sent-text' : 'pending-text'">
+                {{ orderDetailMap[order.id]?.[0]?.isSended ? 'Sent' : 'Pending' }}
+              </span>
+            </span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <!-- Detay alanı -->
+        <div class="example-element-detail" *ngFor="let detail of orderDetailMap[order.id]">
+          <div class="detail-wrapper">
+            <p><strong>📅 Order Date:</strong> {{ detail.orderDate | date:'short' }}</p>
+            <p><strong>🛒 Product:</strong> {{ detail.name }}</p>
+            <p><strong>🔢 Quantity:</strong> {{ detail.quantity }}</p>
+            <p><strong>💸 Price:</strong> {{ detail.price }} ₺</p>
+            <p><strong>📝 Description:</strong> {{ detail.description }}</p>
+            <p><strong>📍 Address:</strong> {{ detail.address }}</p>
+          </div>
+        </div>
+    
+      </mat-expansion-panel>
+      </mat-accordion>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-paginator
+    [length]="dataSource.data.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)"
+    showFirstLastButtons>
+  </mat-paginator>
+</div>
