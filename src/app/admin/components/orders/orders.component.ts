@@ -59,7 +59,8 @@ export class OrdersComponent implements OnInit {
         address: od.address,
         isSended : od.isSended,
         orderNumber : od.orderNumber,
-        totalPrice:od.totalPrice
+        totalPrice:od.totalPrice,
+        imagePath : od.imagePath
 
       }
       return detail

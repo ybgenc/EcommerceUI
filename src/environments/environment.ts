@@ -5,7 +5,9 @@
 export const environment = {
   production: true,
   googleClientId: '902986185803-4dl068flq4g27bpj299khhlq7es3g988.apps.googleusercontent.com',
-  baseUrl: "https://ecommerceapiapi20250415132220.azurewebsites.net/api"
+  // baseUrl: "https://ecommerceapiapi20250415132220.azurewebsites.net/api"
+  baseUrl: "https://localhost:7148/api"
+
 
 };
 

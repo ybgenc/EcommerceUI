@@ -29,7 +29,7 @@ export class BasketsComponent implements OnInit {
           basketId: b.basketId
         };        
         return basketItemList;
-      });
+      })
 
 
   }

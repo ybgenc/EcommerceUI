@@ -63,7 +63,6 @@ mat-panel-description {
 
 .example-element-detail {
   background-color: #feefd9;
-  padding: 20px 24px;
   border-radius: 25px;
   box-shadow: inset 6px 6px 12px #feefd9,
               inset -6px -6px 12px #feefd9;
@@ -141,4 +140,15 @@ mat-paginator button:hover {
 .pending-text {
   color: #a14c00;
   font-weight: bold;
+}
+.btn-outline-light {
+  color: #ffffff;
+  background-color: #201862;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: #b54c00;
 }

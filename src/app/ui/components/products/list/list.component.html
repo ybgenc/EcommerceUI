@@ -1,45 +1,33 @@
-<div class="listComponent container mt-4">
-  <div class="row g-4">
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let product of products; let i = index" 
-         (mouseenter)="setHoveredIndex(i)" (mouseleave)="resetHoveredIndex()">
-      <div class="card custom-card shadow-lg rounded-4 h-100">
-
-        <img width="250" height="250" *ngIf="!product.productImageFiles?.length" 
-             src="assets/defaultImage.jpg" class="card-img-top" alt="...">
-        <img width="250" height="250" *ngIf="product.productImageFiles?.length" 
-             src="{{this.baseStorageUrl.url}}/{{product.imagePath}}" 
-             class="card-img-top" alt="...">
-
-        <div class="card-body text-center d-flex flex-column">
-          <h3 class="card-title custom-card-title">{{ product.title }}</h3>
-          <p class="card-text custom-card-text flex-grow-1" [ngClass]="{'expanded-text': hoveredIndex === i}"> 
-            {{ product.description | slice:0:150 }}...
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let product of products; let i = index">
+      <div class="card h-100 product-card shadow-sm">
+        
+        <div class="product-img-container" [routerLink]="['/products', product.id]">
+          <img *ngIf="!product.productImageFiles?.length"
+               src="assets/defaultImage.jpg" 
+               class="card-img-top product-img" 
+               alt="Product image">
+          <img *ngIf="product.productImageFiles?.length"
+               [src]="baseStorageUrl.url + '/' + product.imagePath"
+               class="card-img-top product-img" 
+               alt="Product image">
+        </div>
+        
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title product-title text-truncate" [routerLink]="['/products', product.id]">{{ product.title }}</h5>
+          <p class="card-text product-description flex-grow-1" [routerLink]="['/products', product.id]">
+            {{ product.description | slice:0:100 }}<span *ngIf="product.description?.length > 100">...</span>
           </p>
-          <p class="custom-price">
-            {{ product.price }}$
-          </p>
-          <a class="btn custom-btn mt-auto" (click)="addItemToBasket(product.id, 1)">Add to Basket</a>
+          <div class="d-flex justify-content-between align-items-center mt-auto">
+            <span class="product-price fw-bold" [routerLink]="['/products', product.id]">{{ product.price | currency }}</span>
+            <button class="btn btn-primary btn-sm" 
+                    (click)="addItemToBasket(product.id, 1); $event.stopPropagation();">
+              <i class="bi bi-cart-plus me-1"></i> Add to Cart
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Pagination -->
-  <nav aria-label="Page navigation example" class="mt-4">
-    <ul class="pagination custom-pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span>&laquo; Prev</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link active" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span>Next &raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 </div>

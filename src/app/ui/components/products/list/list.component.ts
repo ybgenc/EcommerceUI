@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { error } from 'console';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseStorageUrl } from 'src/app/contract/BaseStorageUrl';
 import { Add_Basket_Item } from 'src/app/contract/basket/add-basket-item';
 import { List_Product } from 'src/app/contract/product/list-product';
+import { AlertType } from 'src/app/services/admin/alertify.service';
 import { BaseUrlService } from 'src/app/services/common/models/base-url.service';
 import { BasketService } from 'src/app/services/common/models/basket.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
@@ -23,24 +25,17 @@ export class ListComponent implements OnInit {
     private productService: ProductService,
     private spinner: NgxSpinnerService,
     private toasterService: ToasterCustomService,
-    private activeRoot: ActivatedRoute,
     private baseUrlService: BaseUrlService,
     private basketService : BasketService
   ) {}
 
-  hoveredIndex: number | null = null; // Track the index of the hovered card
   products?: List_Product[];
-  currentPageNo: number;
-  totalProductCount: number;
-  totalPageCount: number;
   baseStorageUrl: BaseStorageUrl;
   baseUrl : string;
 
   async ngOnInit() {
     this.baseStorageUrl = await this.baseUrlService.getBaseStorageUrl();
 
-    this.activeRoot.params.subscribe(async (params) => {
-      this.currentPageNo = parseInt(params['pageNo'] ?? '1');
 
       const ProductList: List_Product[] = await this.productService.Get(
         () => {},
@@ -75,19 +70,10 @@ export class ListComponent implements OnInit {
       console.log(this.products)
 
       
-    });
+    ;
 
 
   }
-
-  setHoveredIndex(index: number) {
-    this.hoveredIndex = index;
-  }
-
-  resetHoveredIndex() {
-    this.hoveredIndex = null;
-  }
-
   addItemToBasket(ProductId: string, Quantity: number) {
     const item: Add_Basket_Item = {
       ProductId: ProductId,
@@ -95,7 +81,19 @@ export class ListComponent implements OnInit {
     };
   
     this.basketService.addItemToBasket(item)
-    this.basketService.getBasketItems()
+      .then(() => {
+        this.toasterService.message("The item is now in your basket.","",  {
+          position: ToasterPosition.TopCenter,
+          toasterAlertType: ToasterAlertType.Info,
+        });
+      })
+      .catch(error => {
+        this.toasterService.message("Oops! Something went wrong. Please try again.","",  {
+          position: ToasterPosition.TopCenter,
+          toasterAlertType: ToasterAlertType.Error,
+        });
+      });
   }
+  
   
 }

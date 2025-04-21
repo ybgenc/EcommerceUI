@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
 import { RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
+import { DetailModule } from './detail/detail.module';
 
 
 
@@ -15,7 +16,8 @@ import { ListComponent } from './list/list.component';
     CommonModule,
     RouterModule.forChild([
       {path: '', component: ProductsComponent}
-    ])
+    ]),
+    DetailModule
   ]
 })
 export class ProductsModule { }

@@ -39,4 +39,12 @@ export class OrderService {
    return await firstValueFrom(orderDetail)
   }
 
+  async sendOrder (OrderId: string){
+    const sendOrder = await this.httpClientService.Update({
+      controller :'order',
+      action:'SendOrder'
+    },{OrderId})
+    return firstValueFrom(sendOrder)
+  }
+
 }

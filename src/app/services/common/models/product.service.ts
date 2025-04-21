@@ -5,12 +5,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { first, firstValueFrom, Observable } from 'rxjs';
 import { List_Product_Image } from 'src/app/contract/list-product-image';
 import { List_Product } from 'src/app/contract/product/list-product';
+import { get } from 'http';
+import { Product_Detail } from 'src/app/contract/product/product_detail';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private httpClientService: HttpClientService) {}
+  constructor(private httpClientService: HttpClientService) { }
 
   Create(
     product: Create_Product,
@@ -83,6 +85,19 @@ export class ProductService {
 
     return await firstValueFrom(getObservable);
   }
+
+  
+  async getProduct(id: string): Promise<Product_Detail> {
+    const getProduct: Observable<Product_Detail> = this.httpClientService.Get<Product_Detail>(
+      { 
+        controller: 'Product' 
+      }, id
+    );
+    return await firstValueFrom(getProduct);
+  }
+  
+  
+  
 
   async DeleteImage(id: string, imageId: string) {
     const fullEndpoint = `https://localhost:7148/api/Product/DeleteProductImage/${id}?imageId=${imageId}`; // todo => Fix it

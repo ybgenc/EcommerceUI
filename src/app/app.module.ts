@@ -38,13 +38,13 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('accessToken'),
-        allowedDomains: ['ecommerceapiapi20250415132220.azurewebsites.net'],
+        allowedDomains: ['localhost:7148'],
       },
     }),
     SocialLoginModule,
   ],
   providers: [
-    { provide: 'baseUrl', useValue: 'https://ecommerceapiapi20250415132220.azurewebsites.net/api', multi: true },
+    { provide: 'baseUrl', useValue: 'https://localhost:7148/api', multi: true },
     DatePipe,
     {
       provide: 'SocialAuthServiceConfig',

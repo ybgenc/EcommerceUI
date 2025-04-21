@@ -8,5 +8,6 @@ export class Order_Detail {
     isSended : boolean;
     orderNumber : string
     totalPrice : number
+    imagePath : string
   }
   

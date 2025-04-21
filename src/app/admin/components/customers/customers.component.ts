@@ -15,6 +15,9 @@ import { Customer_List } from 'src/app/contract/customer/Customer_List';
 import { OrderService } from 'src/app/services/common/models/order.service';
 import { Order_Detail } from 'src/app/contract/order/OrderDetail';
 import { Order_List } from 'src/app/contract/order/Order_List';
+import { BaseUrlService } from 'src/app/services/common/models/base-url.service';
+import { BaseStorageUrl } from 'src/app/contract/BaseStorageUrl';
+import { SubmitOrderDialogComponent, submitState } from 'src/app/dialogs/submit-order-dialog/submit-order-dialog.component';
 
 
 @Component({
@@ -35,6 +38,7 @@ export class CustomersComponent implements OnInit {
     orders: Order_List[] = [];
     orderDetail:Order_Detail[] = [];
     orderDetailMap: { [orderId: string]: Order_Detail[] } = {};
+  baseStorageUrl: BaseStorageUrl;
 
   
   // Tanımlı kolonlar
@@ -49,7 +53,7 @@ export class CustomersComponent implements OnInit {
     
 
   constructor(
-    private customerService: CustomerService, private orderService: OrderService
+    private customerService: CustomerService, private orderService: OrderService, private baseUrlService: BaseUrlService, private dialog : MatDialog
   ) { }
   
   get pagedData(): any[] {
@@ -86,28 +90,34 @@ export class CustomersComponent implements OnInit {
       address: od.address,
       isSended: od.isSended,
       orderNumber: od.orderNumber,
-      totalPrice: od.totalPrice
+      totalPrice: od.totalPrice,
+      imagePath:od.imagePath
     }));
   }
   
 
 
   async ngOnInit() {
+    this.baseStorageUrl = await this.baseUrlService.getBaseStorageUrl();
     await this.getCustomer();
   }
 
-  // openUpdateDialog(product: List_Product) {
-  //   const dialogRef = this.dialog.open(UpdateDialogComponent, {
-  //     width: '400px',
-  //     data: product,
-  //   });
-
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result) {
-  //       this.getCustomer();
-  //     }
-  //   });
-  // }
+  openUpdateDialog(orderId: string) {
+    const dialogRef = this.dialog.open(SubmitOrderDialogComponent, {
+      width: '400px',
+      data: submitState.No 
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === submitState.Yes) {
+        this.orderService.sendOrder(orderId).then(() => {
+          this.getCustomer();
+        }).catch(error => {
+          console.error("Error sending order:", error);
+        });
+      }
+    });
+  }
 
   toggleDescription(element: any) {
     element.isExpanded = !element.isExpanded;

@@ -1,0 +1,105 @@
+<div class="product-detail-container">
+  <div *ngIf="isLoading" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Loading product details...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+    <button (click)="loadProduct()">Try Again</button>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && product" class="product-content">
+    <div class="product-header">
+      <h1>{{ product.name }}</h1>
+      <div class="product-meta">
+        <span class="product-id">{{ product.id }}</span>
+        <span class="product-date">Added: {{ formatDate(product.createdDate) }}</span>
+        <span *ngIf="product.updatedDate" class="product-date">
+          Updated: {{ formatDate(product.updatedDate) }}
+        </span>
+      </div>
+    </div>
+
+    <div class="product-info">
+      <div class="row">
+        <div class="col-12 col-md-7">
+          <div class="product-slider" #sliderContainer>
+            <div *ngIf="product?.productImageFiles && product.productImageFiles.length > 0" class="slider-container">
+              <!-- Main slider image -->
+              <div class="slider-main">
+                <div class="slider-image">
+                  <img [src]="baseStorageUrl.url + '/' + showcaseImage" alt="{{ product.name }}" class="img-fluid" />
+                </div>
+
+                <button class="slider-nav prev" (click)="prevSlide()">
+                  <span class="nav-arrow">&#10094;</span>
+                </button>
+                <button class="slider-nav next" (click)="nextSlide()">
+                  <span class="nav-arrow">&#10095;</span>
+                </button>
+              </div>
+
+              <div *ngIf="product.productImageFiles.length > 1" class="slider-thumbnails">
+                <div *ngFor="let img of product.productImageFiles; let i = index" class="thumbnail"
+                  [class.active]="currentImageIndex === i" (click)="goToSlide(i);">
+                  <img [src]="baseStorageUrl.url + '/' + img.path" alt="Thumbnail {{ i + 1 }}" class="img-thumbnail" />
+                </div>
+              </div>
+
+              <div *ngIf="product.productImageFiles.length > 1" class="slider-indicators">
+                <span *ngFor="let img of product.productImageFiles; let i = index" class="dot"
+                  [class.active]="currentImageIndex === i" (click)="goToSlide(i);"></span>
+              </div>
+            </div>
+
+            <div *ngIf="isLoading" class="slider-loading">
+              <div class="loading-spinner"></div>
+            </div>
+
+            <div *ngIf="!isLoading && (!product?.productImageFiles || product.productImageFiles.length === 0)"
+              class="slider-no-images">
+              <div class="no-image-placeholder">
+                <span class="no-image-icon">&#128247;</span>
+                <p>No images available</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <div class="product-details">
+            <h2 class="product-title">{{ product.title }}</h2>
+
+            <div class="product-stats">
+              <div class="price">
+                <span class="label">Price:</span>
+                <span class="value">${{ product.price.toFixed(2) }}</span>
+              </div>
+
+              <div class="stock" [ngClass]="{'low-stock': product.stock < 5}">
+                <span class="label">Stock:</span>
+                <span class="value">{{ product.stock }}</span>
+                <span *ngIf="product.stock < 5" class="stock-warning">Low stock!</span>
+              </div>
+            </div>
+
+            <div class="product-description">
+              <h3>Description</h3>
+              <p>{{ product.description }}</p>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn-add-to-cart" [disabled]="product.stock <= 0" (click)="addItemToBasket(1)">
+                Add to Cart
+              </button>
+              <button class="btn-back" routerLink="/products">
+                Back to Products
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

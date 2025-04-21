@@ -11,54 +11,84 @@
       </mat-expansion-panel-header>
 
       <mat-accordion>
-        <mat-expansion-panel 
-        *ngFor="let order of customer.Orders"
-        (opened)="getOrderDetail(order.id)">
-    
-        <mat-expansion-panel-header 
-          [ngClass]="orderDetailMap[order.id]?.[0]?.isSended ? 'sended-header' : 'pending-header'">
-          
-          <mat-panel-title>
-            <span class="order-status-icon">
-              <ng-container *ngIf="orderDetailMap[order.id]?.[0]?.isSended; else notSent">
-                ✅
-              </ng-container>
-              <ng-template #notSent>📦</ng-template>
-            </span>
-            <span class="order-title-text">
-              Order No: {{ orderDetailMap[order.id]?.[0]?.orderNumber }} |
-              Total: {{ orderDetailMap[order.id]?.[0]?.totalPrice }} ₺ |
-              Status: 
-              <span [ngClass]="orderDetailMap[order.id]?.[0]?.isSended ? 'sent-text' : 'pending-text'">
-                {{ orderDetailMap[order.id]?.[0]?.isSended ? 'Sent' : 'Pending' }}
+        <mat-expansion-panel *ngFor="let order of customer.Orders" (opened)="getOrderDetail(order.id)">
+
+          <mat-expansion-panel-header
+            [ngClass]="orderDetailMap[order.id]?.[0]?.isSended ? 'sended-header' : 'pending-header'">
+
+            <mat-panel-title>
+              <span class="order-status-icon">
+                <ng-container *ngIf="orderDetailMap[order.id]?.[0]?.isSended; else notSent">
+                  ✅
+                </ng-container>
+                <ng-template #notSent>📦</ng-template>
               </span>
-            </span>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-    
-        <!-- Detay alanı -->
-        <div class="example-element-detail" *ngFor="let detail of orderDetailMap[order.id]">
-          <div class="detail-wrapper">
-            <p><strong>📅 Order Date:</strong> {{ detail.orderDate | date:'short' }}</p>
-            <p><strong>🛒 Product:</strong> {{ detail.name }}</p>
-            <p><strong>🔢 Quantity:</strong> {{ detail.quantity }}</p>
-            <p><strong>💸 Price:</strong> {{ detail.price }} ₺</p>
-            <p><strong>📝 Description:</strong> {{ detail.description }}</p>
-            <p><strong>📍 Address:</strong> {{ detail.address }}</p>
+              <span class="order-title-text">
+                Order No: {{ orderDetailMap[order.id]?.[0]?.orderNumber }} |
+                Total: {{ orderDetailMap[order.id]?.[0]?.totalPrice }} ₺ |
+                Status:
+                <span [ngClass]="orderDetailMap[order.id]?.[0]?.isSended ? 'sent-text' : 'pending-text'">
+                  {{ orderDetailMap[order.id]?.[0]?.isSended ? 'Sent' : 'Pending' }}
+                </span>
+              </span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="example-element-detail" *ngFor="let detail of orderDetailMap[order.id]; let last = last">
+            <div class="detail-wrapper mb-4 border p-3 rounded">
+              <div class="row align-items-center">
+                <!-- Left side: text info -->
+                <div class="col-md-8">
+                  <p><strong>🛒 Product:</strong> {{ detail.name }}</p>
+                  <p><strong>🔢 Quantity:</strong> {{ detail.quantity }}</p>
+                  <p><strong>💸 Price:</strong> {{ detail.price }} ₺</p>
+                </div>
+
+                <div class="col-md-4 text-end">
+                  <img [src]="baseStorageUrl.url + '/' + detail.imagePath" class="img-fluid rounded"
+                    style="max-width: 100px;" alt="Product Image">
+                </div>
+              </div>
+
+
+              <!-- Only show on last -->
+              <div *ngIf="last" class="row align-items-center mt-3 order-details">
+                <hr class="mb-2">
+                <div class="col-md-9">
+                  <div class="order-info">
+                    <p class="mb-2">
+                      <i class="bi bi-calendar-date me-2"></i>
+                      <strong>Order Date:</strong> {{ detail.orderDate | date:'short' }}
+                    </p>
+                    <p class="mb-2">
+                      <i class="bi bi-file-text me-2"></i>
+                      <strong>Description:</strong> {{ detail.description }}
+                    </p>
+                    <p class="mb-2">
+                      <i class="bi bi-geo-alt me-2"></i>
+                      <strong>Address:</strong> {{ detail.address }}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-3 text-end">
+                  <button [disabled]="orderDetailMap[order.id]?.[0]?.isSended" class="btn btn-outline-light" type="button" (click)="openUpdateDialog(order.id)">
+                    <i class="bi bi-send me-2"></i> Send
+                  </button>
+                  
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-    
-      </mat-expansion-panel>
+
+
+
+
+        </mat-expansion-panel>
       </mat-accordion>
 
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-paginator
-    [length]="dataSource.data.length"
-    [pageSize]="pageSize"
-    [pageSizeOptions]="[5, 10, 20]"
-    (page)="onPageChange($event)"
-    showFirstLastButtons>
+  <mat-paginator [length]="dataSource.data.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)" showFirstLastButtons>
   </mat-paginator>
 </div>
